@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://rshub-am.github.io/sitemap.xml
