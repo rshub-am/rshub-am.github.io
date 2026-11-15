@@ -201,7 +201,7 @@ _Table 1. Printing conditions._
 
 直接在四部分之后写普通 Markdown 链接；核对作者、题目、年份和 DOI 后再替换占位文字：
 
-```markdown
+```text
 ---
 
 Original article: [Authors, article title, journal, year.](https://doi.org/VERIFIED-DOI)
