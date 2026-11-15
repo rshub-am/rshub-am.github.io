@@ -535,8 +535,7 @@ html[data-theme="dark"] .rsh,
   font-size: 0.87rem;
   line-height: 1.65;
 }
-.post > article:has(> #overview) > table,
-.post > article:has(> #overview) .rsh-parameter-details table {
+.post > article:has(> #overview) > table {
   display: block;
   max-width: 100%;
   width: 100%;
@@ -555,32 +554,6 @@ html[data-theme="dark"] .rsh,
 }
 .post > article:has(> #overview) table th {
   background: var(--global-card-bg-color);
-}
-
-.post > article:has(> #overview) .rsh-parameter-details {
-  min-width: 0;
-  margin: 1.4rem 0;
-  padding: 0.9rem 1rem;
-  border: 1px solid var(--global-divider-color);
-  border-radius: 4px;
-}
-.post > article:has(> #overview) .rsh-parameter-details summary {
-  cursor: pointer;
-  font-weight: 600;
-  color: var(--global-text-color);
-}
-.post > article:has(> #overview) .rsh-parameter-details summary:focus-visible {
-  outline: 2px solid var(--global-theme-color);
-  outline-offset: 4px;
-}
-.post > article:has(> #overview) .rsh-parameter-details[open] summary {
-  margin-bottom: 1.1rem;
-}
-.post > article:has(> #overview) .rsh-parameter-details h4 {
-  margin: 1.7rem 0 0.9rem;
-  color: var(--hub-case-heading-color);
-  font-size: 1.05rem;
-  font-weight: 700;
 }
 
 .rsh .rsh-benchmark-card {
