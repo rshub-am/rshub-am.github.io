@@ -283,7 +283,7 @@ for key, case in cases.items():
     text += '## Problem set\n\n### Printing parameters\n\n' + table(['Parameter', 'Value', 'Unit / description'], printing) + '\n_Printing and heat-source values describe the supplied simulation configuration._\n\n### Simulation parameters\n\n' + table(['Parameter', 'Value / setting', 'Unit / description'], simulation) + '\n' + case['note'] + '\n\n'
     if solver_case:
         text += 'The latest saved identification and the displayed archived comparison are listed separately. The plotted curves and their reference frames are retained from the saved figures.\n\n'
-    text += '<details class="rsh-parameter-details" markdown="1">\n<summary>Temperature-dependent material parameters</summary>\n\n'
+    text += '<section class="rsh-parameter-details" markdown="1">\n\n### Temperature-dependent material parameters\n\n'
     text += 'Every configured temperature node is listed below, with exact conversion from K to °C. Each property is linearly interpolated within its own table and held at its nearest endpoint outside that range.\n\n'
     text += '\n'.join(material_sections)
     for title, props in grouped_properties.items():
@@ -297,7 +297,7 @@ for key, case in cases.items():
         text += 'The phase-change settings are numerical model inputs: latent heat is zero and the configured solidus / liquidus are 1273.15 / 1274.15 K. They are not claimed as measured steel melting temperatures.\n\n'
     if key == 'double_cantilever':
         text += 'The local IN718 model uses zero hardening modulus and a maximum-yield factor of 1. The phase-change values are retained model inputs, separate from the temperature-dependent mechanical tables.\n\n'
-    text += '</details>\n\n'
+    text += '</section>\n\n'
     text += f'[Download full parameter JSON](/assets/data/cases/{folder}/thermal-parameters.json) · [Download temperature-dependent CSV](/assets/data/cases/{folder}/temperature-dependent-properties.csv) · [Download simulation YAML](/assets/data/cases/{folder}/simulation-parameters.yaml)\n\n'
     if key == 'thin_wall':
         text += f'[Download the separate 20-layer YAML](/assets/data/cases/{folder}/simulation-20-layer.yaml)\n\n'

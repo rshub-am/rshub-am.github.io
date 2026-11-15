@@ -79,8 +79,9 @@ _Figure 1. Geometry and dimensions._
 | Thermal strain reference temperature | 20                                                                      | °C                |
 | Thermal strain cutoff                | No explicit cutoff configured                                           | —                 |
 
-<details class="rsh-parameter-details" markdown="1">
-<summary>Temperature-dependent material parameters</summary>
+<section class="rsh-parameter-details" markdown="1">
+
+### Temperature-dependent material parameters
 
 The S355 thermal and temperature-dependent mechanical parameters used in this simulation are adapted from Qi et al., supplementary Tables S2–S3 <a href="#reference-2">[2]</a>.
 
@@ -115,7 +116,7 @@ A dash denotes no independent tabulated value at that temperature, not zero. Eac
 
 The phase-change settings are numerical model inputs: latent heat is zero and the configured solidus / liquidus are 1273.15 / 1274.15 K. They are not claimed as measured steel melting temperatures.
 
-</details>
+</section>
 
 [Download full parameter JSON](/assets/data/cases/thin-wall/thermal-parameters.json) · [Download temperature-dependent CSV](/assets/data/cases/thin-wall/temperature-dependent-properties.csv) · [Download simulation YAML](/assets/data/cases/thin-wall/simulation-parameters.yaml)
 

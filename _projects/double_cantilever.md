@@ -82,8 +82,9 @@ _Figure 1. Geometry and dimensions._
 | Thermal strain reference temperature                                                              | 25                                                                          | °C                |
 | Thermal strain cutoff                                                                             | solidus                                                                     | —                 |
 
-<details class="rsh-parameter-details" markdown="1">
-<summary>Temperature-dependent material parameters</summary>
+<section class="rsh-parameter-details" markdown="1">
+
+### Temperature-dependent material parameters
 
 The temperature-dependent thermal and mechanical parameters used in the local scan model for inherent-strain identification are taken from Dunbar et al., Tables 4–6 <a href="#reference-2">[2]</a>.
 
@@ -122,7 +123,7 @@ A dash denotes no independent tabulated value at that temperature, not zero. Eac
 
 Maximum yield stress, $\sigma_{\mathrm{max}}$, is $1\,\sigma_{\mathrm{y}}$ at each interpolated temperature.
 
-</details>
+</section>
 
 [Download full parameter JSON](/assets/data/cases/double_cantilever/thermal-parameters.json) · [Download temperature-dependent CSV](/assets/data/cases/double_cantilever/temperature-dependent-properties.csv) · [Download simulation YAML](/assets/data/cases/double_cantilever/simulation-parameters.yaml)
 

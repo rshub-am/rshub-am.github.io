@@ -73,12 +73,13 @@ Keep the last column for units (use — for dimensionless values). Put qualifier
 | Identified inherent strain, $\varepsilon_{\mathrm{xx}}^{\ast}$, $\varepsilon_{\mathrm{yy}}^{\ast}$, $\varepsilon_{\mathrm{zz}}^{\ast}$ | To be supplied                                                                                             | ‰                 |
 | Layer activation, if used                                                                                                              | To be supplied                                                                                             | Layers × mm       |
 
-<details class="rsh-parameter-details" markdown="1">
-<summary>Temperature-dependent material parameters</summary>
+<section class="rsh-parameter-details" markdown="1">
+
+### Temperature-dependent material parameters
 
 Introduce the literature source of the temperature-dependent material parameters with a numbered citation linked to the Reference list. Distinguish the local scan model for inherent-strain identification from a full thermal–mechanical simulation. Use at most two material-property tables per case: one thermal table and one mechanical table, with properties in columns aligned on their own group’s temperature grid. Group different materials within those tables. Put material constants in compact prose above the tables rather than separate tables. Use a dash for missing independent tabulated entries, not zero, and do not invent interpolated entries. Keep process settings, ambient temperature, thermal boundaries, heat-source inputs and numerical controls in the printing/simulation summary tables and full configuration downloads. Preserve every temperature node and provide matching YAML, JSON and CSV downloads. Use integer temperature nodes where available: label the temperature column $T$ (°C) for integer °C nodes, or $T$ (K) with a $T$ (°C) comparison column for integer K nodes. Label material properties with $C_{\mathrm{p}}$, $k$, $\alpha$, $E$, $\nu$, $\sigma_{\mathrm{y}}$, $H$, and $\sigma_{\mathrm{max}}$. Use mathematical notation for variables wherever they occur, with upright subscripts. Display only the current identified inherent strains in one or two compact rows, without “Latest” labels or archived comparison values. Use superscript stars and three decimal places; preserve full precision and result provenance in the downloadable data.
 
-</details>
+</section>
 
 ## Results
 

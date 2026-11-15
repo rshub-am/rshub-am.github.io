@@ -281,10 +281,10 @@ for (const theme of ["light", "dark"]) {
       await expect(page.locator("#overview")).toHaveCSS("color", theme === "light" ? "rgb(23, 25, 27)" : "rgb(245, 245, 239)");
       expect(Number(await page.locator("#overview").evaluate((heading) => getComputedStyle(heading).fontWeight))).toBeGreaterThanOrEqual(700);
       await expect(page.locator(".post > article > table")).toHaveCount(2);
-      const parameters = page.locator("details.rsh-parameter-details");
+      const parameters = page.locator("section.rsh-parameter-details");
       await expect(parameters).toHaveCount(1);
-      await expect(parameters).not.toHaveAttribute("open", "");
-      await expect(parameters.locator("table")).toHaveCount(4);
+      await expect(parameters.locator("table")).toHaveCount(2);
+      await expect(page.locator("details.rsh-parameter-details")).toHaveCount(0);
       const jsonResponse = await request.get("/assets/data/cases/cantilever/thermal-parameters.json");
       expect(jsonResponse.ok()).toBe(true);
       const data = await jsonResponse.json();
@@ -292,12 +292,9 @@ for (const theme of ["light", "dark"]) {
       expect(data.materials.upper_region.conductivity.temperature_k).toHaveLength(9);
       expect(data.materials.upper_region.thermal_expansion.temperature_k).toHaveLength(8);
       expect(data.materials.upper_region.yield_stress.temperature_k).toHaveLength(4);
-      await parameters.locator("summary").click();
-      await expect(parameters).toHaveAttribute("open", "");
       for (const table of await parameters.locator("table").all()) await expect(table).toBeVisible();
-      await expect(parameters.locator("table").nth(1).locator("tbody tr")).toHaveCount(9);
-      await expect(parameters.locator("table").nth(2).locator("tbody tr")).toHaveCount(14);
-      await expect(parameters.locator("table").nth(3).locator("tbody tr")).toHaveCount(4);
+      await expect(parameters.locator("table").nth(0).locator("tbody tr")).toHaveCount(23);
+      await expect(parameters.locator("table").nth(1).locator("tbody tr")).toHaveCount(11);
       await expect(parameters).toContainText("1335.85");
       await expect(parameters).toContainText("286000");
       const csvResponse = await request.get("/assets/data/cases/cantilever/temperature-dependent-properties.csv");
@@ -306,8 +303,6 @@ for (const theme of ["light", "dark"]) {
       expect(records).toHaveLength(62);
       expect(records[0]).toBe("property,temperature_k,temperature_c,value,unit,status");
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(await page.evaluate(() => window.innerWidth + 1));
-      await parameters.locator("summary").click();
-      await expect(parameters.locator("table").first()).toBeHidden();
       await expect(page.locator(".rsh-case-figures img")).toHaveCount(9);
       await expect(page.locator(".post > article")).toContainText("Reference:");
       await expect(page.locator("#reference-1")).toHaveCount(1);
@@ -323,15 +318,14 @@ for (const theme of ["light", "dark"]) {
       ["bridge", "bridge", 100],
       ["double-cantilever", "double_cantilever", 285],
     ]) {
-      test(`${slug} provides complete expandable parameters and result downloads`, async ({ page, request }) => {
+      test(`${slug} provides complete visible parameters and result downloads`, async ({ page, request }) => {
         await openPage(page, `/benchmarks/${slug}/`);
         const article = page.locator(".post > article");
         await expect(article.locator(":scope > h2")).toHaveText(["Overview", "Problem set", "Results"]);
         await expect(article.locator(":scope > h3").filter({ hasText: /^(Printing|Simulation) parameters$/ })).toHaveCount(2);
         await expect(article.locator(":scope > table")).toHaveCount(2);
-        const parameters = article.locator("details.rsh-parameter-details");
-        await expect(parameters).not.toHaveAttribute("open", "");
-        await expect(parameters.locator("table").first()).toBeHidden();
+        const parameters = article.locator("section.rsh-parameter-details");
+        await expect(article.locator("details.rsh-parameter-details")).toHaveCount(0);
 
         const response = await request.get(`/assets/data/cases/${folder}/thermal-parameters.json`);
         expect(response.ok()).toBe(true);
@@ -348,13 +342,9 @@ for (const theme of ["light", "dark"]) {
         expect(records).toHaveLength(expectedRows + 1);
         expect(records[0]).toBe("region,material,property,temperature_k,temperature_c,value,unit,status");
 
-        await parameters.locator("summary").click();
-        await expect(parameters).toHaveAttribute("open", "");
         for (const table of await parameters.locator("table").all()) await expect(table).toBeVisible();
-        expect(await parameters.locator("table").count()).toBeGreaterThan(7);
+        await expect(parameters.locator("table")).toHaveCount(2);
         expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(await page.evaluate(() => window.innerWidth + 1));
-        await parameters.locator("summary").click();
-        await expect(parameters.locator("table").first()).toBeHidden();
 
         const downloads = await article.locator('a[href^="/assets/"]').evaluateAll((links) => links.map((link) => link.getAttribute("href")));
         expect(downloads.some((url) => url.endsWith("simulation-parameters.yaml"))).toBe(true);

@@ -84,8 +84,9 @@ _Figure 1. Geometry and dimensions._
 
 The physical print layer is 30 µm. The 250 µm layer pitch used in the model is a separate coarse activation setting.
 
-<details class="rsh-parameter-details" markdown="1">
-<summary>Temperature-dependent material parameters</summary>
+<section class="rsh-parameter-details" markdown="1">
+
+### Temperature-dependent material parameters
 
 The temperature-dependent thermal and mechanical parameters used in the local scan model for inherent-strain identification are adapted from Ganeriwala et al. (Tables 1 and 2). <a href="#reference-1">[1]</a>
 
@@ -124,7 +125,7 @@ A dash denotes no independent tabulated value at that temperature, not zero. Eac
 
 Maximum yield stress, $\sigma_{\mathrm{max}}$, is $1.2\,\sigma_{\mathrm{y}}$ at each interpolated temperature.
 
-</details>
+</section>
 
 [Download full parameter JSON](/assets/data/cases/bridge/thermal-parameters.json) · [Download temperature-dependent CSV](/assets/data/cases/bridge/temperature-dependent-properties.csv) · [Download simulation YAML](/assets/data/cases/bridge/simulation-parameters.yaml)
 

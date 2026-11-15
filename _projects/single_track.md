@@ -83,8 +83,9 @@ _Figure 1. Geometry and dimensions._
 
 The supplied drawing shows a 30 mm substrate width; the saved FE mesh spans 10 mm across $Y$. The result below uses the saved mesh.
 
-<details class="rsh-parameter-details" markdown="1">
-<summary>Temperature-dependent material parameters</summary>
+<section class="rsh-parameter-details" markdown="1">
+
+### Temperature-dependent material parameters
 
 The temperature-dependent material parameters used in this thermal–mechanical simulation are taken from Liao et al., Tables 2–3 <a href="#reference-1">[1]</a>.
 
@@ -171,7 +172,7 @@ A dash denotes no independent tabulated value at that temperature, not zero. Eac
 
 Maximum yield stress, $\sigma_{\mathrm{max}}$, is $1.2\,\sigma_{\mathrm{y}}$ at each interpolated temperature.
 
-</details>
+</section>
 
 [Download full parameter JSON](/assets/data/cases/single_track/thermal-parameters.json) · [Download temperature-dependent CSV](/assets/data/cases/single_track/temperature-dependent-properties.csv) · [Download simulation YAML](/assets/data/cases/single_track/simulation-parameters.yaml)
 

@@ -51,7 +51,7 @@ Benchmarks 页面只显示一段简介、算例卡片或简短空状态；Method
 
 当前打印配置与存档热历史的配置哈希不匹配；所选局部优化的固有应变也不同于已有宏观配置。正文分别注明当前输入、所选标定和存档输出，不把它们当成同一套已验证计算。页脚已引用维护者提供的 Phan 等（2019）原始 AM-Bench 文章，DOI 和书目信息已通过 Crossref 核对；存档图中各条实验曲线与原文测量条件的对应关系仍未逐项核实。
 
-Cantilever 正文采用 Overview、Problem set、Results 三段普通 Markdown；Problem set 分为打印参数和模拟参数两类；两张概要表下方提供可展开的材料常数和温度相关材料表。Overview 使用中子衍射法和轮廓法的简短实验介绍；模拟表列出温度相关材料参数、常温参数和已有固有应变识别值。新算例模板也采用普通 Markdown。只需编辑标题、段落、表格、图片路径和图注；完整参数使用 `<details markdown="1">` 原生展开控件，内部仍是 Markdown 表格。所有数据随页面静态输出，不需要点击后加载，折叠时也存在于 HTML 中。`assets/data/cases/cantilever/thermal-parameters.json` 包含完整配置、单位与参数状态；`temperature-dependent-properties.csv` 逐条列出 61 个原始温度节点值，方便程序和 AI 读取。更新参数时应同步正文、JSON 和 CSV。新算例草稿保持 `published: false`；当前五个算例均已发布。
+Cantilever 正文采用 Overview、Problem set、Results 三段普通 Markdown；Problem set 分为打印参数和模拟参数两类；两张概要表下方直接显示材料常数和温度相关材料表。Overview 使用中子衍射法和轮廓法的简短实验介绍；模拟表列出温度相关材料参数、常温参数和已有固有应变识别值。新算例模板也采用普通 Markdown。只需编辑标题、段落、表格、图片路径和图注；完整参数使用带标题的静态 `<section markdown="1">`，内部仍是 Markdown 表格。所有材料数据直接显示，无需点击展开。`assets/data/cases/cantilever/thermal-parameters.json` 包含完整配置、单位与参数状态；`temperature-dependent-properties.csv` 逐条列出 61 个原始温度节点值，方便程序和 AI 读取。更新参数时应同步正文、JSON 和 CSV。新算例草稿保持 `published: false`；当前五个算例均已发布。
 
 ## 算例顺序与图片目录
 
@@ -293,7 +293,7 @@ npm run dev
 
 ## 其他四个算例的数据与结果
 
-Single track、Thin-wall、Bridge 和 Double-cantilever 采用与 Cantilever 一致的 **Overview → Problem set → Results**。Problem set 分为 Printing parameters 和 Simulation parameters；材料常数及全部温度相关材料节点在原生 details 中静态输出；工艺、环境温度、热源及数值控制不在展开表中重复列出，完整设置保留在配置下载中，AI 和程序无需展开即可读取 HTML。下载的 YAML 保留物理与数值设置，去除本地路径与运行输出位置。
+Single track、Thin-wall、Bridge 和 Double-cantilever 采用与 Cantilever 一致的 **Overview → Problem set → Results**。Problem set 分为 Printing parameters 和 Simulation parameters；材料常数及全部温度相关材料节点在静态 section 中直接显示；工艺、环境温度、热源及数值控制不在材料表中重复列出，完整设置保留在配置下载中，读者、AI 和程序均可直接读取。下载的 YAML 保留物理与数值设置，去除本地路径与运行输出位置。
 
 - **Single track**：配置为 IN718 沉积层和 Ti-6Al-4V 基板，600 W、6 mm/s、单层 0.67 mm。几何图的基板宽度为 30 mm，而保存网格的 Y 跨度为 10 mm，正文明确区别。封面使用用户提供的 `single_track_results.pdf`；Results 保留最后保存的应力场，200 s 冷却后的物理时间约为 206.66667 s。云图是原生未变形 Y=0 截面，未平滑；CSV 包含所有 29,170 个单元，包括 active 标记。
 - **Thin-wall**：主页面使用四层钢薄壁，2245 W、8.33 mm/s、层高 2 mm、层间冷却 400 s。使用 Y=0 半模型和指定锚点释放。另提供独立二十层 YAML；不将二十层设置冒充四层结果。保存的回弹模长为 3.246338 mm，对应竖向分量为 3.242710 mm。没有保存的固有应变识别结果，也未生成识别值。

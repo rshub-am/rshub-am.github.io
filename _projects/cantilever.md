@@ -81,8 +81,9 @@ _Figure 1. Geometry and dimensions._
 | Layer activation                                                                                  | 25 × 0.5; an additional 50-layer run is shown for warpage                        | Layers × mm       |
 | Constraints and release                                                                           | Fixed substrate bottom; release the interface over $X$ = 0–55 mm                 | —                 |
 
-<details class="rsh-parameter-details" markdown="1">
-<summary>Temperature-dependent material parameters</summary>
+<section class="rsh-parameter-details" markdown="1">
+
+### Temperature-dependent material parameters
 
 The temperature-dependent conductivity, elastic, thermal-expansion and plastic parameters used in the local scan model for inherent-strain identification are taken from Table S6 of Qi et al. <a href="#reference-2">[2]</a>.
 
@@ -142,7 +143,7 @@ _For $\alpha$ below 100 °C, the solver holds the first value, 5.56 × 10⁻⁶ 
 
 Maximum yield stress corresponds to the configured cap at equivalent plastic strain 0.35. These settings do not establish a validated melting-temperature material model.
 
-</details>
+</section>
 
 [Download the full parameter JSON](/assets/data/cases/cantilever/thermal-parameters.json) · [Download all temperature-dependent values as CSV](/assets/data/cases/cantilever/temperature-dependent-properties.csv)
 
