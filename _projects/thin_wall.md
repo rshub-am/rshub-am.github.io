@@ -67,20 +67,6 @@ _Figure 1. Geometry and dimensions._
 | Goldak heat-source dimensions (front / rear / transverse / depth) | 2 / 6 / 2.5 / 3 | mm   |
 | Cooling interval (after each deposited layer)                     | 400             | s    |
 
-### Simulation parameters
-
-| Parameter                            | Value / setting                                                         | Unit              |
-| ------------------------------------ | ----------------------------------------------------------------------- | ----------------- |
-| Ambient temperature                  | 25                                                                      | °C                |
-| High-temperature material model      | See tables below                                                        | —                 |
-| S355 elastic parameters (20 °C)      | $E$ = 206<br>$\nu$ = 0.29                                               | GPa<br>—          |
-| S355 plastic parameters (20 °C)      | $\sigma_{\mathrm{y}}$ = 450<br>$H$ = 7<br>$\sigma_{\mathrm{max}}$ = 520 | MPa<br>GPa<br>MPa |
-| Identified inherent strain           | Not used — this case uses full thermal–mechanical analysis              | —                 |
-| Thermal strain reference temperature | 20                                                                      | °C                |
-| Thermal strain cutoff                | No explicit cutoff configured                                           | —                 |
-
-<section class="rsh-parameter-details" markdown="1">
-
 ### Temperature-dependent material parameters
 
 The S355 thermal and temperature-dependent mechanical parameters used in this simulation are adapted from Qi et al., supplementary Tables S2–S3 <a href="#reference-2">[2]</a>.
@@ -116,9 +102,19 @@ A dash denotes no independent tabulated value at that temperature, not zero. Eac
 
 The phase-change settings are numerical model inputs: latent heat is zero and the configured solidus / liquidus are 1273.15 / 1274.15 K. They are not claimed as measured steel melting temperatures.
 
-</section>
-
 [Download full parameter JSON](/assets/data/cases/thin-wall/thermal-parameters.json) · [Download temperature-dependent CSV](/assets/data/cases/thin-wall/temperature-dependent-properties.csv) · [Download simulation YAML](/assets/data/cases/thin-wall/simulation-parameters.yaml)
+
+### Inherent strain solution parameters
+
+| Parameter                            | Value / setting                                                         | Unit              |
+| ------------------------------------ | ----------------------------------------------------------------------- | ----------------- |
+| Ambient temperature                  | 25                                                                      | °C                |
+| High-temperature material model      | See tables above                                                        | —                 |
+| S355 elastic parameters (20 °C)      | $E$ = 206<br>$\nu$ = 0.29                                               | GPa<br>—          |
+| S355 plastic parameters (20 °C)      | $\sigma_{\mathrm{y}}$ = 450<br>$H$ = 7<br>$\sigma_{\mathrm{max}}$ = 520 | MPa<br>GPa<br>MPa |
+| Identified inherent strain           | Not used — this case uses full thermal–mechanical analysis              | —                 |
+| Thermal strain reference temperature | 20                                                                      | °C                |
+| Thermal strain cutoff                | No explicit cutoff configured                                           | —                 |
 
 [Download the separate 20-layer YAML](/assets/data/cases/thin-wall/simulation-20-layer.yaml)
 

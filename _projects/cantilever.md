@@ -66,23 +66,6 @@ _Figure 1. Geometry and dimensions._
 | Goldak heat-source dimensions (front / rear / transverse / depth) | 50 / 50 / 50 / 50 | µm   |
 | Cooling interval (after each simulated layer)                     | 200               | s    |
 
-### Simulation parameters
-
-| Parameter                                                                                         | Value / setting                                                                  | Unit              |
-| ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ----------------- |
-| Ambient temperature                                                                               | 25                                                                               | °C                |
-| High-temperature material model                                                                   | See tables below                                                                 | —                 |
-| Elastic parameters (20 °C, constant)                                                              | $E$ = 208<br>$\nu$ = 0.277                                                       | GPa<br>—          |
-| Plastic parameters (20 °C, constant)                                                              | $\sigma_{\mathrm{y}}$ = 725<br>$H$ = 0.75714<br>$\sigma_{\mathrm{max}}$ = 990    | MPa<br>GPa<br>MPa |
-| Elastic parameters (saved local identification)                                                   | $E$ = 156.3<br>$\nu$ = 0.300                                                     | GPa<br>—          |
-| Plastic parameters (saved local identification)                                                   | $\sigma_{\mathrm{y}}$ = 308.9<br>$H$ = 1.000<br>$\sigma_{\mathrm{max}}$ = 370.68 | MPa<br>GPa<br>MPa |
-| Identified inherent strain, $\varepsilon_{\mathrm{xx}}^{\ast} = \varepsilon_{\mathrm{yy}}^{\ast}$ | −3.655                                                                           | ‰                 |
-| Identified inherent strain, $\varepsilon_{\mathrm{zz}}^{\ast}$                                    | +9.504                                                                           | ‰                 |
-| Layer activation                                                                                  | 25 × 0.5; an additional 50-layer run is shown for warpage                        | Layers × mm       |
-| Constraints and release                                                                           | Fixed substrate bottom; release the interface over $X$ = 0–55 mm                 | —                 |
-
-<section class="rsh-parameter-details" markdown="1">
-
 ### Temperature-dependent material parameters
 
 The temperature-dependent conductivity, elastic, thermal-expansion and plastic parameters used in the local scan model for inherent-strain identification are taken from Table S6 of Qi et al. <a href="#reference-2">[2]</a>.
@@ -143,9 +126,22 @@ _For $\alpha$ below 100 °C, the solver holds the first value, 5.56 × 10⁻⁶ 
 
 Maximum yield stress corresponds to the configured cap at equivalent plastic strain 0.35. These settings do not establish a validated melting-temperature material model.
 
-</section>
-
 [Download the full parameter JSON](/assets/data/cases/cantilever/thermal-parameters.json) · [Download all temperature-dependent values as CSV](/assets/data/cases/cantilever/temperature-dependent-properties.csv)
+
+### Inherent strain solution parameters
+
+| Parameter                                                                                         | Value / setting                                                                  | Unit              |
+| ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | ----------------- |
+| Ambient temperature                                                                               | 25                                                                               | °C                |
+| High-temperature material model                                                                   | See tables above                                                                 | —                 |
+| Elastic parameters (20 °C, constant)                                                              | $E$ = 208<br>$\nu$ = 0.277                                                       | GPa<br>—          |
+| Plastic parameters (20 °C, constant)                                                              | $\sigma_{\mathrm{y}}$ = 725<br>$H$ = 0.75714<br>$\sigma_{\mathrm{max}}$ = 990    | MPa<br>GPa<br>MPa |
+| Elastic parameters (saved local identification)                                                   | $E$ = 156.3<br>$\nu$ = 0.300                                                     | GPa<br>—          |
+| Plastic parameters (saved local identification)                                                   | $\sigma_{\mathrm{y}}$ = 308.9<br>$H$ = 1.000<br>$\sigma_{\mathrm{max}}$ = 370.68 | MPa<br>GPa<br>MPa |
+| Identified inherent strain, $\varepsilon_{\mathrm{xx}}^{\ast} = \varepsilon_{\mathrm{yy}}^{\ast}$ | −3.655                                                                           | ‰                 |
+| Identified inherent strain, $\varepsilon_{\mathrm{zz}}^{\ast}$                                    | +9.504                                                                           | ‰                 |
+| Layer activation                                                                                  | 25 × 0.5; an additional 50-layer run is shown for warpage                        | Layers × mm       |
+| Constraints and release                                                                           | Fixed substrate bottom; release the interface over $X$ = 0–55 mm                 | —                 |
 
 ## Results
 

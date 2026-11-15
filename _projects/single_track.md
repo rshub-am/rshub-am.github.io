@@ -67,24 +67,6 @@ _Figure 1. Geometry and dimensions._
 | Goldak heat-source dimensions (front / rear / transverse / depth) | 0.8 / 0.8 / 0.8 / 0.8 | mm   |
 | Cooling interval (after each deposited layer)                     | 200                   | s    |
 
-### Simulation parameters
-
-| Parameter                            | Value / setting                                                              | Unit              |
-| ------------------------------------ | ---------------------------------------------------------------------------- | ----------------- |
-| Ambient temperature                  | 25                                                                           | °C                |
-| High-temperature material model      | See tables below                                                             | —                 |
-| IN718 elastic parameters (20 °C)     | $E$ = 156.3<br>$\nu$ = 0.3                                                   | GPa<br>—          |
-| IN718 plastic parameters (20 °C)     | $\sigma_{\mathrm{y}}$ = 308.9<br>$H$ = 1<br>$\sigma_{\mathrm{max}}$ = 370.68 | MPa<br>GPa<br>MPa |
-| Ti-6Al-4V elastic parameters (20 °C) | $E$ = 125<br>$\nu$ = 0.34                                                    | GPa<br>—          |
-| Ti-6Al-4V plastic parameters (20 °C) | $\sigma_{\mathrm{y}}$ = 955<br>$H$ = 0<br>$\sigma_{\mathrm{max}}$ = 1146     | MPa<br>GPa<br>MPa |
-| Identified inherent strain           | Not used — this case uses full thermal–mechanical analysis                   | —                 |
-| Thermal strain reference temperature | 20                                                                           | °C                |
-| Thermal strain cutoff                | No explicit cutoff configured                                                | —                 |
-
-The supplied drawing shows a 30 mm substrate width; the saved FE mesh spans 10 mm across $Y$. The result below uses the saved mesh.
-
-<section class="rsh-parameter-details" markdown="1">
-
 ### Temperature-dependent material parameters
 
 The temperature-dependent material parameters used in this thermal–mechanical simulation are taken from Liao et al., Tables 2–3 <a href="#reference-1">[1]</a>.
@@ -172,9 +154,23 @@ A dash denotes no independent tabulated value at that temperature, not zero. Eac
 
 Maximum yield stress, $\sigma_{\mathrm{max}}$, is $1.2\,\sigma_{\mathrm{y}}$ at each interpolated temperature.
 
-</section>
-
 [Download full parameter JSON](/assets/data/cases/single_track/thermal-parameters.json) · [Download temperature-dependent CSV](/assets/data/cases/single_track/temperature-dependent-properties.csv) · [Download simulation YAML](/assets/data/cases/single_track/simulation-parameters.yaml)
+
+### Inherent strain solution parameters
+
+| Parameter                            | Value / setting                                                              | Unit              |
+| ------------------------------------ | ---------------------------------------------------------------------------- | ----------------- |
+| Ambient temperature                  | 25                                                                           | °C                |
+| High-temperature material model      | See tables above                                                             | —                 |
+| IN718 elastic parameters (20 °C)     | $E$ = 156.3<br>$\nu$ = 0.3                                                   | GPa<br>—          |
+| IN718 plastic parameters (20 °C)     | $\sigma_{\mathrm{y}}$ = 308.9<br>$H$ = 1<br>$\sigma_{\mathrm{max}}$ = 370.68 | MPa<br>GPa<br>MPa |
+| Ti-6Al-4V elastic parameters (20 °C) | $E$ = 125<br>$\nu$ = 0.34                                                    | GPa<br>—          |
+| Ti-6Al-4V plastic parameters (20 °C) | $\sigma_{\mathrm{y}}$ = 955<br>$H$ = 0<br>$\sigma_{\mathrm{max}}$ = 1146     | MPa<br>GPa<br>MPa |
+| Identified inherent strain           | Not used — this case uses full thermal–mechanical analysis                   | —                 |
+| Thermal strain reference temperature | 20                                                                           | °C                |
+| Thermal strain cutoff                | No explicit cutoff configured                                                | —                 |
+
+The supplied drawing shows a 30 mm substrate width; the saved FE mesh spans 10 mm across $Y$. The result below uses the saved mesh.
 
 ## Results
 

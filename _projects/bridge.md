@@ -67,25 +67,6 @@ _Figure 1. Geometry and dimensions._
 | Goldak heat-source dimensions (front / rear / transverse / depth) | 54 / 54 / 54 / 30 | µm   |
 | Cooling interval (after each deposited layer)                     | 200               | s    |
 
-### Simulation parameters
-
-| Parameter                                                                                         | Value / setting                                                                | Unit              |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------- |
-| Ambient temperature                                                                               | 25                                                                             | °C                |
-| High-temperature material model                                                                   | See tables below                                                               | —                 |
-| Elastic parameters (room temperature, constant)                                                   | $E$ = 114.58<br>$\nu$ = 0.3                                                    | GPa<br>—          |
-| Plastic parameters (room temperature, constant)                                                   | $\sigma_{\mathrm{y}}$ = 1151<br>$H$ = 1.8139<br>$\sigma_{\mathrm{max}}$ = 1310 | MPa<br>GPa<br>MPa |
-| Identified inherent strain, $\varepsilon_{\mathrm{xx}}^{\ast} = \varepsilon_{\mathrm{yy}}^{\ast}$ | -2.820                                                                         | ‰                 |
-| Identified inherent strain, $\varepsilon_{\mathrm{zz}}^{\ast}$                                    | 2.879                                                                          | ‰                 |
-| Layer activation                                                                                  | 36 × 0.25                                                                      | Layers × mm       |
-| Constraints and release                                                                           | fixed plane $Z$ = 0 mm; no release                                             | —                 |
-| Thermal strain reference temperature                                                              | 25                                                                             | °C                |
-| Thermal strain cutoff                                                                             | solidus                                                                        | —                 |
-
-The physical print layer is 30 µm. The 250 µm layer pitch used in the model is a separate coarse activation setting.
-
-<section class="rsh-parameter-details" markdown="1">
-
 ### Temperature-dependent material parameters
 
 The temperature-dependent thermal and mechanical parameters used in the local scan model for inherent-strain identification are adapted from Ganeriwala et al. (Tables 1 and 2). <a href="#reference-1">[1]</a>
@@ -125,9 +106,24 @@ A dash denotes no independent tabulated value at that temperature, not zero. Eac
 
 Maximum yield stress, $\sigma_{\mathrm{max}}$, is $1.2\,\sigma_{\mathrm{y}}$ at each interpolated temperature.
 
-</section>
-
 [Download full parameter JSON](/assets/data/cases/bridge/thermal-parameters.json) · [Download temperature-dependent CSV](/assets/data/cases/bridge/temperature-dependent-properties.csv) · [Download simulation YAML](/assets/data/cases/bridge/simulation-parameters.yaml)
+
+### Inherent strain solution parameters
+
+| Parameter                                                                                         | Value / setting                                                                | Unit              |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------- |
+| Ambient temperature                                                                               | 25                                                                             | °C                |
+| High-temperature material model                                                                   | See tables above                                                               | —                 |
+| Elastic parameters (room temperature, constant)                                                   | $E$ = 114.58<br>$\nu$ = 0.3                                                    | GPa<br>—          |
+| Plastic parameters (room temperature, constant)                                                   | $\sigma_{\mathrm{y}}$ = 1151<br>$H$ = 1.8139<br>$\sigma_{\mathrm{max}}$ = 1310 | MPa<br>GPa<br>MPa |
+| Identified inherent strain, $\varepsilon_{\mathrm{xx}}^{\ast} = \varepsilon_{\mathrm{yy}}^{\ast}$ | -2.820                                                                         | ‰                 |
+| Identified inherent strain, $\varepsilon_{\mathrm{zz}}^{\ast}$                                    | 2.879                                                                          | ‰                 |
+| Layer activation                                                                                  | 36 × 0.25                                                                      | Layers × mm       |
+| Constraints and release                                                                           | fixed plane $Z$ = 0 mm; no release                                             | —                 |
+| Thermal strain reference temperature                                                              | 25                                                                             | °C                |
+| Thermal strain cutoff                                                                             | solidus                                                                        | —                 |
+
+The physical print layer is 30 µm. The 250 µm layer pitch used in the model is a separate coarse activation setting.
 
 [Download simulation configuration](/assets/data/cases/bridge/macro-parameters.yaml) · [Download identification results](/assets/data/cases/bridge/identification-results.json)
 

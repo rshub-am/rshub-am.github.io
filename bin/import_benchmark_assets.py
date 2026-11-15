@@ -254,7 +254,7 @@ for key, case in cases.items():
                 ('Heat-source radii', *dimension([heat[p] for p in ['front_radius_x_m', 'rear_radius_x_m', 'radius_y_m', 'radius_z_m']], '; front / rear / transverse / depth')),
                 ('Cooling interval', path['cooling_time_s'], 's after each deposited layer')]
     simulation = [('Initial / ambient temperature', f'{f(cfg["thermal"]["initial_temperature_c"])} / {f(cfg["thermal"]["convection"]["ambient_temperature_c"])}', '°C'),
-                  ('High-temperature material model', 'Complete temperature-dependent tables below; linear interpolation with endpoint holds', '—')]
+                  ('High-temperature material model', 'Complete temperature-dependent tables above; linear interpolation with endpoint holds', '—')]
     if solver_case:
         simulation += [('Room-temperature macro material model', material_setting(forward['material']), 'Constant properties'),
                        ('Material model for the saved local identification', material_setting(optimization['material']), 'Constant properties'),
@@ -280,10 +280,8 @@ for key, case in cases.items():
             frontmatter['img'] += '?v=' + hashlib.sha256(cover.read_bytes()).hexdigest()[:12]
     text = '---\n' + yaml.safe_dump(frontmatter, sort_keys=False, allow_unicode=True, width=140) + '---\n\n[← All benchmarks](/benchmarks/)\n\n## Overview\n\n' + case['overview'] + '\n\n'
     text += f'![Geometry and dimensions.](/assets/img/cases/{folder}/geometry-overview.png)\n\n_Figure 1. Geometry and dimensions._\n\n[Download the original geometry PDF](/assets/pdf/cases/{folder}/geometry-overview.pdf)\n\n'
-    text += '## Problem set\n\n### Printing parameters\n\n' + table(['Parameter', 'Value', 'Unit / description'], printing) + '\n_Printing and heat-source values describe the supplied simulation configuration._\n\n### Simulation parameters\n\n' + table(['Parameter', 'Value / setting', 'Unit / description'], simulation) + '\n' + case['note'] + '\n\n'
-    if solver_case:
-        text += 'The latest saved identification and the displayed archived comparison are listed separately. The plotted curves and their reference frames are retained from the saved figures.\n\n'
-    text += '<section class="rsh-parameter-details" markdown="1">\n\n### Temperature-dependent material parameters\n\n'
+    text += '## Problem set\n\n### Printing parameters\n\n' + table(['Parameter', 'Value', 'Unit / description'], printing) + '\n_Printing and heat-source values describe the supplied simulation configuration._\n\n'
+    text += '### Temperature-dependent material parameters\n\n'
     text += 'Every configured temperature node is listed below, with exact conversion from K to °C. Each property is linearly interpolated within its own table and held at its nearest endpoint outside that range.\n\n'
     text += '\n'.join(material_sections)
     for title, props in grouped_properties.items():
@@ -297,8 +295,10 @@ for key, case in cases.items():
         text += 'The phase-change settings are numerical model inputs: latent heat is zero and the configured solidus / liquidus are 1273.15 / 1274.15 K. They are not claimed as measured steel melting temperatures.\n\n'
     if key == 'double_cantilever':
         text += 'The local IN718 model uses zero hardening modulus and a maximum-yield factor of 1. The phase-change values are retained model inputs, separate from the temperature-dependent mechanical tables.\n\n'
-    text += '</section>\n\n'
     text += f'[Download full parameter JSON](/assets/data/cases/{folder}/thermal-parameters.json) · [Download temperature-dependent CSV](/assets/data/cases/{folder}/temperature-dependent-properties.csv) · [Download simulation YAML](/assets/data/cases/{folder}/simulation-parameters.yaml)\n\n'
+    text += '### Inherent strain solution parameters\n\n' + table(['Parameter', 'Value / setting', 'Unit / description'], simulation) + '\n' + case['note'] + '\n\n'
+    if solver_case:
+        text += 'The latest saved identification and the displayed archived comparison are listed separately. The plotted curves and their reference frames are retained from the saved figures.\n\n'
     if key == 'thin_wall':
         text += f'[Download the separate 20-layer YAML](/assets/data/cases/{folder}/simulation-20-layer.yaml)\n\n'
     if solver_case:

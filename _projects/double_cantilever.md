@@ -67,23 +67,6 @@ _Figure 1. Geometry and dimensions._
 | Goldak heat-source dimensions (front / rear / transverse / depth) | 50 / 50 / 50 / 125 | µm   |
 | Cooling interval (after each deposited layer)                     | 200                | s    |
 
-### Simulation parameters
-
-| Parameter                                                                                         | Value / setting                                                             | Unit              |
-| ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ----------------- |
-| Ambient temperature                                                                               | 25                                                                          | °C                |
-| High-temperature material model                                                                   | See tables below                                                            | —                 |
-| Elastic parameters (room temperature, constant)                                                   | $E$ = 208<br>$\nu$ = 0.3                                                    | GPa<br>—          |
-| Plastic parameters (room temperature, constant)                                                   | $\sigma_{\mathrm{y}}$ = 1172<br>$H$ = 0<br>$\sigma_{\mathrm{max}}$ = 1172   | MPa<br>GPa<br>MPa |
-| Identified inherent strain, $\varepsilon_{\mathrm{xx}}^{\ast} = \varepsilon_{\mathrm{yy}}^{\ast}$ | -4.339                                                                      | ‰                 |
-| Identified inherent strain, $\varepsilon_{\mathrm{zz}}^{\ast}$                                    | 19.647                                                                      | ‰                 |
-| Layer activation                                                                                  | 36 × 0.515                                                                  | Layers × mm       |
-| Constraints and release                                                                           | fixed plane $Z$ = 10 mm; release left and right interfaces at $Z$ = 32.2 mm | —                 |
-| Thermal strain reference temperature                                                              | 25                                                                          | °C                |
-| Thermal strain cutoff                                                                             | solidus                                                                     | —                 |
-
-<section class="rsh-parameter-details" markdown="1">
-
 ### Temperature-dependent material parameters
 
 The temperature-dependent thermal and mechanical parameters used in the local scan model for inherent-strain identification are taken from Dunbar et al., Tables 4–6 <a href="#reference-2">[2]</a>.
@@ -123,9 +106,22 @@ A dash denotes no independent tabulated value at that temperature, not zero. Eac
 
 Maximum yield stress, $\sigma_{\mathrm{max}}$, is $1\,\sigma_{\mathrm{y}}$ at each interpolated temperature.
 
-</section>
-
 [Download full parameter JSON](/assets/data/cases/double_cantilever/thermal-parameters.json) · [Download temperature-dependent CSV](/assets/data/cases/double_cantilever/temperature-dependent-properties.csv) · [Download simulation YAML](/assets/data/cases/double_cantilever/simulation-parameters.yaml)
+
+### Inherent strain solution parameters
+
+| Parameter                                                                                         | Value / setting                                                             | Unit              |
+| ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ----------------- |
+| Ambient temperature                                                                               | 25                                                                          | °C                |
+| High-temperature material model                                                                   | See tables above                                                            | —                 |
+| Elastic parameters (room temperature, constant)                                                   | $E$ = 208<br>$\nu$ = 0.3                                                    | GPa<br>—          |
+| Plastic parameters (room temperature, constant)                                                   | $\sigma_{\mathrm{y}}$ = 1172<br>$H$ = 0<br>$\sigma_{\mathrm{max}}$ = 1172   | MPa<br>GPa<br>MPa |
+| Identified inherent strain, $\varepsilon_{\mathrm{xx}}^{\ast} = \varepsilon_{\mathrm{yy}}^{\ast}$ | -4.339                                                                      | ‰                 |
+| Identified inherent strain, $\varepsilon_{\mathrm{zz}}^{\ast}$                                    | 19.647                                                                      | ‰                 |
+| Layer activation                                                                                  | 36 × 0.515                                                                  | Layers × mm       |
+| Constraints and release                                                                           | fixed plane $Z$ = 10 mm; release left and right interfaces at $Z$ = 32.2 mm | —                 |
+| Thermal strain reference temperature                                                              | 25                                                                          | °C                |
+| Thermal strain cutoff                                                                             | solidus                                                                     | —                 |
 
 [Download simulation configuration](/assets/data/cases/double_cantilever/macro-parameters.yaml) · [Download identification results](/assets/data/cases/double_cantilever/identification-results.json)
 
