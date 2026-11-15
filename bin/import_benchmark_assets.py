@@ -199,6 +199,11 @@ for key, case in cases.items():
     (dirs['data'] / 'simulation-parameters.yaml').write_text('# Portable saved physics configuration; local paths and runtime outputs omitted.\n' + yaml.safe_dump(safe_public(cfg), sort_keys=False, allow_unicode=True))
     csv_rows = []
     material_sections = []
+    grouped_rows = {"Thermal properties": [], "Mechanical properties": []}
+    grouped_properties = {
+        "Thermal properties": [p for p in ("heat_capacity", "conductivity") if any(p in m for m in cfg["materials"].values())],
+        "Mechanical properties": [p for p in properties if p not in ("heat_capacity", "conductivity") and any(p in m for m in cfg["materials"].values())],
+    }
     unique = []
     for region, mat in cfg['materials'].items():
         existing = next((item for item in unique if item[1] == mat), None)
@@ -210,20 +215,30 @@ for key, case in cases.items():
             ('density_kg_m3', 'Density', 'kg/m³'), ('latent_heat_j_kg', 'Latent heat', 'J/kg'),
             ('solidus_temperature_k', 'Solidus temperature', 'K'), ('liquidus_temperature_k', 'Liquidus temperature', 'K'),
             ('maximum_yield_factor', 'Maximum yield factor', 'Dimensionless')] if field in mat]
-        block = f'#### {mat["name"]} — {" and ".join(r.replace("_", " ") for r in same_regions)}\n\n'
-        block += table(['Parameter', 'Value', 'Unit'], scalars) + '\n'
+        block = f'**{mat["name"]} — {" and ".join(r.replace("_", " ") for r in same_regions)}.** '
+        block += ". ".join(f"{name} = {f(value)} {unit}" for name, value, unit in scalars) + ".\n\n"
         for prop, (label, value_key, unit) in properties.items():
             if prop not in mat:
                 continue
             temperatures, values = mat[prop]['temperature_k'], mat[prop][value_key]
             assert len(temperatures) == len(values) and np.all(np.diff(temperatures) > 0)
-            block += f'##### {label}\n\n' + table(['Temperature (°C)', 'Temperature (K)', f'{label} ({unit})'], [(round(t - 273.15, 8), t, v) for t, v in zip(temperatures, values)]) + '\n'
             for r in same_regions:
                 csv_rows.extend((r, mat['name'], prop, t, round(t - 273.15, 8), v, unit, 'configured') for t, v in zip(temperatures, values))
         if 'maximum_yield_stress' not in mat:
             factor = mat.get('maximum_yield_factor', 1)
             block += f'Maximum yield stress is {f(factor)} × the interpolated initial yield stress.\n\n'
         material_sections.append(block)
+        for title, props in grouped_properties.items():
+            temperatures = sorted({t for prop in props if prop in mat for t in mat[prop]['temperature_k']})
+            values_by_property = {
+                prop: dict(zip(mat[prop]['temperature_k'], mat[prop][properties[prop][1]]))
+                for prop in props if prop in mat
+            }
+            for i, t in enumerate(temperatures):
+                grouped_rows[title].append(
+                    [mat['name'] if i == 0 else '', t, round(t - 273.15, 8)]
+                    + [values_by_property.get(prop, {}).get(t, '—') for prop in props]
+                )
     with (dirs['data'] / 'temperature-dependent-properties.csv').open('w', newline='') as handle:
         writer = csv.writer(handle)
         writer.writerow(['region', 'material', 'property', 'temperature_k', 'temperature_c', 'value', 'unit', 'status'])
@@ -271,6 +286,13 @@ for key, case in cases.items():
     text += '<details class="rsh-parameter-details" markdown="1">\n<summary>Temperature-dependent material parameters</summary>\n\n'
     text += 'Every configured temperature node is listed below, with exact conversion from K to °C. Each property is linearly interpolated within its own table and held at its nearest endpoint outside that range.\n\n'
     text += '\n'.join(material_sections)
+    for title, props in grouped_properties.items():
+        text += f'#### {title}\n\n' + table(
+            ['Material', 'Temperature (K)', 'Temperature (°C)']
+            + [f'{properties[prop][0]} ({properties[prop][2]})' for prop in props],
+            grouped_rows[title],
+        ) + '\n'
+    text += 'A dash denotes no independent tabulated value at that temperature, not zero.\n\n'
     if key == 'thin_wall':
         text += 'The phase-change settings are numerical model inputs: latent heat is zero and the configured solidus / liquidus are 1273.15 / 1274.15 K. They are not claimed as measured steel melting temperatures.\n\n'
     if key == 'double_cantilever':

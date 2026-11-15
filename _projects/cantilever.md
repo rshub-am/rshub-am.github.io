@@ -86,64 +86,61 @@ _Figure 1. Geometry and dimensions._
 
 The temperature-dependent conductivity, elastic, thermal-expansion and plastic parameters used in the local scan model for inherent-strain identification are taken from Table S6 of Qi et al. <a href="#reference-2">[2]</a>.
 
-#### Material constants
+**IN625 — build and substrate.** Density, $\rho$ = 8190 kg/m³. Latent heat, $L$ = 286000 J/kg. Solidus temperature, $T_{\mathrm{s}}$ = 1533 K. Liquidus temperature, $T_{\mathrm{l}}$ = 1609 K. Volumetric heat capacity, $\rho C_{\mathrm{p}}$ = $\rho C_{\mathrm{p}}(T)$ J/(m³·K).
 
-| Parameter                                       | Value / setting                               | Unit     |
-| ----------------------------------------------- | --------------------------------------------- | -------- |
-| Material regions                                | Build and substrate use the same IN625 tables | —        |
-| Density, $\rho$                                 | 8190                                          | kg/m³    |
-| Latent heat, $L$                                | 286000                                        | J/kg     |
-| Solidus temperature, $T_{\mathrm{s}}$           | 1533                                          | K        |
-| Liquidus temperature, $T_{\mathrm{l}}$          | 1609                                          | K        |
-| Volumetric heat capacity, $\rho C_{\mathrm{p}}$ | $\rho C_{\mathrm{p}}(T)$                      | J/(m³·K) |
+Symbols: $C_{\mathrm{p}}$, specific heat capacity; $k$, thermal conductivity; $E$, Young’s modulus; $\sigma_{\mathrm{y}}$, initial yield stress; $\alpha$, thermal expansion coefficient; $\nu$, Poisson ratio; $H$, hardening modulus; $\sigma_{\mathrm{max}}$, maximum yield stress.
+
+#### Thermal properties
+
+| $T$ (°C) | $C_{\mathrm{p}}$ (J/(kg·K)) | $k$ (W/(m·K)) |
+| -------- | --------------------------- | ------------- |
+| 20       | —                           | 9.8           |
+| 24.85    | 435                         | —             |
+| 99.85    | 455                         | —             |
+| 100      | —                           | 10.7          |
+| 199.85   | 479                         | —             |
+| 200      | —                           | 12.5          |
+| 299.85   | 497                         | —             |
+| 300      | —                           | 14.1          |
+| 399.85   | 515                         | —             |
+| 400      | —                           | 15.6          |
+| 499.85   | 527                         | —             |
+| 550      | —                           | 17.4          |
+| 599.85   | 558                         | —             |
+| 650      | —                           | 18.9          |
+| 699.85   | 568                         | —             |
+| 750      | —                           | 20.1          |
+| 799.85   | 680                         | —             |
+| 870      | —                           | 22.7          |
+| 899.85   | 640                         | —             |
+| 999.85   | 620                         | —             |
+| 1099.85  | 640                         | —             |
+| 1169.85  | 650                         | —             |
+| 1335.85  | 720                         | —             |
+
+#### Mechanical properties
+
+| $T$ (°C) | $E$ (GPa) | $\sigma_{\mathrm{y}}$ (MPa) | $\alpha$ (µm/(m·K)) | $\nu$ (—) | $H$ (GPa)           | $\sigma_{\mathrm{max}}$ (MPa) |
+| -------- | --------- | --------------------------- | ------------------- | --------- | ------------------- | ----------------------------- |
+| 20       | 208       | 725                         | —                   | 0.277     | 0.7571428571428572  | 990                           |
+| 100      | 204       | —                           | 5.56                | 0.28      | —                   | —                             |
+| 200      | 198       | —                           | 6.28                | 0.286     | —                   | —                             |
+| 300      | 192       | 610                         | 6.61                | 0.29      | 0.14285714285714285 | 660                           |
+| 400      | 186       | —                           | 7.38                | 0.295     | —                   | —                             |
+| 550      | 179       | —                           | 7.93                | 0.305     | —                   | —                             |
+| 600      | —         | 515                         | —                   | —         | 0.1285714285714286  | 560                           |
+| 650      | 170       | —                           | 9.47                | 0.321     | —                   | —                             |
+| 750      | 161       | —                           | 10.5                | 0.34      | —                   | —                             |
+| 800      | —         | 100                         | —                   | —         | 0.05714285714285715 | 120                           |
+| 870      | 148       | —                           | 11.6                | 0.336     | —                   | —                             |
+
+A dash denotes no independent tabulated value at that temperature, not zero. Each property is linearly interpolated on its own temperature grid, with the nearest endpoint held outside that range.
 
 _Density, latent heat, solidus/liquidus temperatures, and specific heat are retained configuration inputs whose material-source validation is still pending._
 
-#### Conductivity, elasticity, and thermal expansion
+_For $\alpha$ below 100 °C, the solver holds the first value, 5.56 × 10⁻⁶ K⁻¹._
 
-| $T$ (°C) | Thermal conductivity, $k$ (W/(m·K)) | Young’s modulus, $E$ (GPa) | Poisson ratio, $\nu$ | Thermal expansion coefficient, $\alpha$ (10⁻⁶ K⁻¹) |
-| -------- | ----------------------------------- | -------------------------- | -------------------- | -------------------------------------------------- |
-| 20       | 9.8                                 | 208                        | 0.277                | —                                                  |
-| 100      | 10.7                                | 204                        | 0.28                 | 5.56                                               |
-| 200      | 12.5                                | 198                        | 0.286                | 6.28                                               |
-| 300      | 14.1                                | 192                        | 0.29                 | 6.61                                               |
-| 400      | 15.6                                | 186                        | 0.295                | 7.38                                               |
-| 550      | 17.4                                | 179                        | 0.305                | 7.93                                               |
-| 650      | 18.9                                | 170                        | 0.321                | 9.47                                               |
-| 750      | 20.1                                | 161                        | 0.34                 | 10.5                                               |
-| 870      | 22.7                                | 148                        | 0.336                | 11.6                                               |
-
-_The dash means no value is tabulated at that temperature. For $\alpha$ below 100 °C, the solver holds the first value, 5.56 × 10⁻⁶ K⁻¹._
-
-#### Specific heat, $C_{\mathrm{p}}$
-
-| $T$ (K) | $T$ (°C) | Specific heat capacity, $C_{\mathrm{p}}$ (J/(kg·K)) |
-| ------- | -------- | --------------------------------------------------- |
-| 298     | 24.85    | 435                                                 |
-| 373     | 99.85    | 455                                                 |
-| 473     | 199.85   | 479                                                 |
-| 573     | 299.85   | 497                                                 |
-| 673     | 399.85   | 515                                                 |
-| 773     | 499.85   | 527                                                 |
-| 873     | 599.85   | 558                                                 |
-| 973     | 699.85   | 568                                                 |
-| 1073    | 799.85   | 680                                                 |
-| 1173    | 899.85   | 640                                                 |
-| 1273    | 999.85   | 620                                                 |
-| 1373    | 1099.85  | 640                                                 |
-| 1443    | 1169.85  | 650                                                 |
-| 1609    | 1335.85  | 720                                                 |
-
-#### Temperature-dependent plasticity
-
-| $T$ (°C) | Initial yield stress, $\sigma_{\mathrm{y}}$ (MPa) | Hardening modulus, $H$ (GPa) | Maximum yield stress, $\sigma_{\mathrm{max}}$ (MPa) |
-| -------- | ------------------------------------------------- | ---------------------------- | --------------------------------------------------- |
-| 20       | 725                                               | 0.7571428571428572           | 990                                                 |
-| 300      | 610                                               | 0.14285714285714285          | 660                                                 |
-| 600      | 515                                               | 0.1285714285714286           | 560                                                 |
-| 800      | 100                                               | 0.05714285714285715          | 120                                                 |
-
-Between tabulated temperatures, properties are linearly interpolated. Outside each property's own temperature range, the nearest endpoint is held constant. Maximum yield stress corresponds to the configured cap at equivalent plastic strain 0.35. These settings do not establish a validated melting-temperature material model.
+Maximum yield stress corresponds to the configured cap at equivalent plastic strain 0.35. These settings do not establish a validated melting-temperature material model.
 
 </details>
 

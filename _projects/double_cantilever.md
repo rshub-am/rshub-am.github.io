@@ -87,99 +87,38 @@ _Figure 1. Geometry and dimensions._
 
 The temperature-dependent thermal and mechanical parameters used in the local scan model for inherent-strain identification are taken from Dunbar et al., Tables 4–6 <a href="#reference-2">[2]</a>.
 
-#### IN718 — upper region and lower region
+**IN718 — upper region and lower region.** Density, $\rho$ = 8146 kg/m³. Latent heat, $L$ = 286000 J/kg. Solidus temperature, $T_{\mathrm{s}}$ = 1533 K. Liquidus temperature, $T_{\mathrm{l}}$ = 1609 K. Maximum yield factor = 1.
 
-| Parameter                              | Value  | Unit  |
-| -------------------------------------- | ------ | ----- |
-| Density, $\rho$                        | 8146   | kg/m³ |
-| Latent heat, $L$                       | 286000 | J/kg  |
-| Solidus temperature, $T_{\mathrm{s}}$  | 1533   | K     |
-| Liquidus temperature, $T_{\mathrm{l}}$ | 1609   | K     |
-| Maximum yield factor                   | 1      | —     |
+Symbols: $C_{\mathrm{p}}$, specific heat capacity; $k$, thermal conductivity; $E$, Young’s modulus; $\sigma_{\mathrm{y}}$, initial yield stress; $\alpha$, thermal expansion coefficient; $\nu$, Poisson ratio; $H$, hardening modulus; $\sigma_{\mathrm{max}}$, maximum yield stress.
 
-##### Thermal conductivity, $k$
+#### Thermal properties
 
-| $T$ (°C) | Thermal conductivity, $k$ (W/(m·K)) |
-| -------- | ----------------------------------- |
-| 20       | 11.4                                |
-| 100      | 12.5                                |
-| 300      | 14                                  |
-| 500      | 15.5                                |
-| 700      | 21.5                                |
-| 1350     | 31.3                                |
+| $T$ (°C) | $C_{\mathrm{p}}$ (J/(kg·K)) | $k$ (W/(m·K)) |
+| -------- | --------------------------- | ------------- |
+| 20       | 427                         | 11.4          |
+| 100      | 441                         | 12.5          |
+| 300      | 481                         | 14            |
+| 500      | 521                         | 15.5          |
+| 700      | 601                         | 21.5          |
+| 1350     | 691                         | 31.3          |
 
-##### Specific heat capacity, $C_{\mathrm{p}}$
+#### Mechanical properties
 
-| $T$ (°C) | Specific heat capacity, $C_{\mathrm{p}}$ (J/(kg·K)) |
-| -------- | --------------------------------------------------- |
-| 20       | 427                                                 |
-| 100      | 441                                                 |
-| 300      | 481                                                 |
-| 500      | 521                                                 |
-| 700      | 601                                                 |
-| 1350     | 691                                                 |
+| $T$ (°C) | $E$ (GPa) | $\sigma_{\mathrm{y}}$ (MPa) | $\alpha$ (µm/(m·K)) | $\nu$ (—) | $H$ (GPa) |
+| -------- | --------- | --------------------------- | ------------------- | --------- | --------- |
+| 21       | 208       | 1172                        | 12.8                | 0.3       | 0         |
+| 93       | 205       | 1172                        | 12.8                | —         | 0         |
+| 204      | 202       | —                           | 13.5                | —         | —         |
+| 316      | 194       | —                           | 13.9                | —         | —         |
+| 427      | 186       | 1089                        | 14.2                | —         | 0         |
+| 538      | 179       | 1068                        | 14.4                | —         | 0         |
+| 649      | 172       | 1034                        | 15.1                | —         | 0         |
+| 760      | 162       | 827                         | 16.1                | —         | 0         |
+| 871      | 127       | 286                         | —                   | —         | 0         |
+| 954      | 17.8      | 138                         | 16.2                | —         | 0         |
+| 1350     | —         | —                           | —                   | 0.3       | —         |
 
-##### Young’s modulus, $E$
-
-| $T$ (°C) | Young’s modulus, $E$ (GPa) |
-| -------- | -------------------------- |
-| 21       | 208                        |
-| 93       | 205                        |
-| 204      | 202                        |
-| 316      | 194                        |
-| 427      | 186                        |
-| 538      | 179                        |
-| 649      | 172                        |
-| 760      | 162                        |
-| 871      | 127                        |
-| 954      | 17.8                       |
-
-##### Thermal expansion coefficient, $\alpha$
-
-| $T$ (°C) | Thermal expansion coefficient, $\alpha$ (µm/(m·K)) |
-| -------- | -------------------------------------------------- |
-| 21       | 12.8                                               |
-| 93       | 12.8                                               |
-| 204      | 13.5                                               |
-| 316      | 13.9                                               |
-| 427      | 14.2                                               |
-| 538      | 14.4                                               |
-| 649      | 15.1                                               |
-| 760      | 16.1                                               |
-| 954      | 16.2                                               |
-
-##### Poisson ratio, $\nu$
-
-| $T$ (°C) | Poisson ratio, $\nu$ (—) |
-| -------- | ------------------------ |
-| 21       | 0.3                      |
-| 1350     | 0.3                      |
-
-##### Initial yield stress, $\sigma_{\mathrm{y}}$
-
-| $T$ (°C) | Initial yield stress, $\sigma_{\mathrm{y}}$ (MPa) |
-| -------- | ------------------------------------------------- |
-| 21       | 1172                                              |
-| 93       | 1172                                              |
-| 427      | 1089                                              |
-| 538      | 1068                                              |
-| 649      | 1034                                              |
-| 760      | 827                                               |
-| 871      | 286                                               |
-| 954      | 138                                               |
-
-##### Hardening modulus, $H$
-
-| $T$ (°C) | Hardening modulus, $H$ (GPa) |
-| -------- | ---------------------------- |
-| 21       | 0                            |
-| 93       | 0                            |
-| 427      | 0                            |
-| 538      | 0                            |
-| 649      | 0                            |
-| 760      | 0                            |
-| 871      | 0                            |
-| 954      | 0                            |
+A dash denotes no independent tabulated value at that temperature, not zero. Each property is linearly interpolated on its own temperature grid, with the nearest endpoint held outside that range.
 
 Maximum yield stress, $\sigma_{\mathrm{max}}$, is $1\,\sigma_{\mathrm{y}}$ at each interpolated temperature.
 

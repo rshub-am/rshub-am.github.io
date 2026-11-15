@@ -84,125 +84,34 @@ _Figure 1. Geometry and dimensions._
 
 The S355 thermal and temperature-dependent mechanical parameters used in this simulation are adapted from Qi et al., supplementary Tables S2–S3 <a href="#reference-2">[2]</a>.
 
-#### S355 — upper region and lower region
+**S355 — upper region and lower region.** Density, $\rho$ = 7860 kg/m³. Latent heat, $L$ = 0 J/kg. Solidus temperature, $T_{\mathrm{s}}$ = 1273.15 K. Liquidus temperature, $T_{\mathrm{l}}$ = 1274.15 K. Maximum yield factor = 1.
 
-| Parameter                              | Value   | Unit  |
-| -------------------------------------- | ------- | ----- |
-| Density, $\rho$                        | 7860    | kg/m³ |
-| Latent heat, $L$                       | 0       | J/kg  |
-| Solidus temperature, $T_{\mathrm{s}}$  | 1273.15 | K     |
-| Liquidus temperature, $T_{\mathrm{l}}$ | 1274.15 | K     |
-| Maximum yield factor                   | 1       | —     |
+Symbols: $C_{\mathrm{p}}$, specific heat capacity; $k$, thermal conductivity; $E$, Young’s modulus; $\sigma_{\mathrm{y}}$, initial yield stress; $\alpha$, thermal expansion coefficient; $\nu$, Poisson ratio; $H$, hardening modulus; $\sigma_{\mathrm{max}}$, maximum yield stress.
 
-##### Thermal conductivity, $k$
+#### Thermal properties
 
-| $T$ (°C) | Thermal conductivity, $k$ (W/(m·K)) |
-| -------- | ----------------------------------- |
-| 0        | 48.6                                |
-| 700      | 48.6                                |
+| $T$ (°C) | $C_{\mathrm{p}}$ (J/(kg·K)) | $k$ (W/(m·K)) |
+| -------- | --------------------------- | ------------- |
+| 0        | 496                         | 48.6          |
+| 700      | 496                         | 48.6          |
 
-##### Specific heat capacity, $C_{\mathrm{p}}$
+#### Mechanical properties
 
-| $T$ (°C) | Specific heat capacity, $C_{\mathrm{p}}$ (J/(kg·K)) |
-| -------- | --------------------------------------------------- |
-| 0        | 496                                                 |
-| 700      | 496                                                 |
+| $T$ (°C) | $E$ (GPa) | $\sigma_{\mathrm{y}}$ (MPa) | $\alpha$ (µm/(m·K)) | $\nu$ (—) | $H$ (GPa) | $\sigma_{\mathrm{max}}$ (MPa) |
+| -------- | --------- | --------------------------- | ------------------- | --------- | --------- | ----------------------------- |
+| 20       | 206       | 450                         | 12                  | 0.29      | 7         | 520                           |
+| 100      | 203       | 450                         | 12                  | 0.29      | 7         | 520                           |
+| 200      | 201       | 420                         | 12                  | 0.295     | 8         | 500                           |
+| 300      | 200       | 390                         | 12                  | 0.295     | 6         | 420                           |
+| 400      | 165       | 320                         | 12                  | 0.3       | 5         | 370                           |
+| 500      | 100       | 260                         | 12                  | 0.3       | 4         | 300                           |
+| 600      | 60        | 170                         | 12                  | 0.32      | 4.5       | 215                           |
+| 700      | 40        | 60                          | 12                  | 0.32      | 4         | 100                           |
+| 800      | 30        | 50                          | 12                  | 0.35      | 3         | 80                            |
+| 900      | 20        | 50                          | 12                  | 0.35      | 0         | 50                            |
+| 1000     | 10        | 50                          | 15                  | 0.39      | 0         | 50                            |
 
-##### Young’s modulus, $E$
-
-| $T$ (°C) | Young’s modulus, $E$ (GPa) |
-| -------- | -------------------------- |
-| 20       | 206                        |
-| 100      | 203                        |
-| 200      | 201                        |
-| 300      | 200                        |
-| 400      | 165                        |
-| 500      | 100                        |
-| 600      | 60                         |
-| 700      | 40                         |
-| 800      | 30                         |
-| 900      | 20                         |
-| 1000     | 10                         |
-
-##### Thermal expansion coefficient, $\alpha$
-
-| $T$ (°C) | Thermal expansion coefficient, $\alpha$ (µm/(m·K)) |
-| -------- | -------------------------------------------------- |
-| 20       | 12                                                 |
-| 100      | 12                                                 |
-| 200      | 12                                                 |
-| 300      | 12                                                 |
-| 400      | 12                                                 |
-| 500      | 12                                                 |
-| 600      | 12                                                 |
-| 700      | 12                                                 |
-| 800      | 12                                                 |
-| 900      | 12                                                 |
-| 1000     | 15                                                 |
-
-##### Poisson ratio, $\nu$
-
-| $T$ (°C) | Poisson ratio, $\nu$ (—) |
-| -------- | ------------------------ |
-| 20       | 0.29                     |
-| 100      | 0.29                     |
-| 200      | 0.295                    |
-| 300      | 0.295                    |
-| 400      | 0.3                      |
-| 500      | 0.3                      |
-| 600      | 0.32                     |
-| 700      | 0.32                     |
-| 800      | 0.35                     |
-| 900      | 0.35                     |
-| 1000     | 0.39                     |
-
-##### Initial yield stress, $\sigma_{\mathrm{y}}$
-
-| $T$ (°C) | Initial yield stress, $\sigma_{\mathrm{y}}$ (MPa) |
-| -------- | ------------------------------------------------- |
-| 20       | 450                                               |
-| 100      | 450                                               |
-| 200      | 420                                               |
-| 300      | 390                                               |
-| 400      | 320                                               |
-| 500      | 260                                               |
-| 600      | 170                                               |
-| 700      | 60                                                |
-| 800      | 50                                                |
-| 900      | 50                                                |
-| 1000     | 50                                                |
-
-##### Hardening modulus, $H$
-
-| $T$ (°C) | Hardening modulus, $H$ (GPa) |
-| -------- | ---------------------------- |
-| 20       | 7                            |
-| 100      | 7                            |
-| 200      | 8                            |
-| 300      | 6                            |
-| 400      | 5                            |
-| 500      | 4                            |
-| 600      | 4.5                          |
-| 700      | 4                            |
-| 800      | 3                            |
-| 900      | 0                            |
-| 1000     | 0                            |
-
-##### Maximum yield stress, $\sigma_{\mathrm{max}}$
-
-| $T$ (°C) | Maximum yield stress, $\sigma_{\mathrm{max}}$ (MPa) |
-| -------- | --------------------------------------------------- |
-| 20       | 520                                                 |
-| 100      | 520                                                 |
-| 200      | 500                                                 |
-| 300      | 420                                                 |
-| 400      | 370                                                 |
-| 500      | 300                                                 |
-| 600      | 215                                                 |
-| 700      | 100                                                 |
-| 800      | 80                                                  |
-| 900      | 50                                                  |
-| 1000     | 50                                                  |
+A dash denotes no independent tabulated value at that temperature, not zero. Each property is linearly interpolated on its own temperature grid, with the nearest endpoint held outside that range.
 
 The phase-change settings are numerical model inputs: latent heat is zero and the configured solidus / liquidus are 1273.15 / 1274.15 K. They are not claimed as measured steel melting temperatures.
 
