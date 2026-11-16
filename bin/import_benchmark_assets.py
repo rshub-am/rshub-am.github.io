@@ -68,7 +68,9 @@ def f(value):
     if isinstance(value, (float, int)):
         if not math.isfinite(value):
             return 'No finite cap' if value > 0 else str(value)
-        return f'{value:.12g}'
+        if 0 < abs(value) < 0.001:
+            return f'{value:.3e}'
+        return f'{value:.3f}'.rstrip('0').rstrip('.')
     if isinstance(value, list):
         return ' / '.join(f(v) for v in value)
     return str(value)
@@ -286,11 +288,23 @@ for key, case in cases.items():
     text += 'Every configured temperature node is listed below, with exact conversion from K to °C. Each property is linearly interpolated within its own table and held at its nearest endpoint outside that range.\n\n'
     text += '\n'.join(material_sections)
     for title, props in grouped_properties.items():
-        text += f'#### {title}\n\n' + table(
-            ['Material', 'Temperature (K)', 'Temperature (°C)']
-            + [f'{properties[prop][0]} ({properties[prop][2]})' for prop in props],
-            grouped_rows[title],
-        ) + '\n'
+        headers = ['Temperature (K)', 'Temperature (°C)'] + [f'{properties[prop][0]} ({properties[prop][2]})' for prop in props]
+        text += f'#### {title}\n\n'
+        if key == 'single_track':
+            text += '<div class="rsh rsh-case-figures rsh-material-grid" markdown="1">\n\n'
+            by_material = {}
+            name = ''
+            for row in grouped_rows[title]:
+                if row[0]:
+                    name = row[0]
+                    by_material[name] = []
+                by_material[name].append(row[1:])
+            for name, rows in by_material.items():
+                text += f'<section class="rsh-case-figure" markdown="1">\n\n##### {name}\n\n<div class="rsh-case-figure-content rsh-parameter-table" markdown="1">\n\n'
+                text += table(headers, rows) + '\n</div>\n\n</section>\n\n'
+            text += '</div>\n\n'
+        else:
+            text += table(['Material'] + headers, grouped_rows[title]) + '\n'
     text += 'For a constant property, only the first value is shown and subsequent dashes retain that value. Other dashes denote no independent tabulated entry, not zero.\n\n'
     if key == 'thin_wall':
         text += 'The phase-change settings are numerical model inputs: latent heat is zero and the configured solidus / liquidus are 1273.15 / 1274.15 K. They are not claimed as measured steel melting temperatures.\n\n'

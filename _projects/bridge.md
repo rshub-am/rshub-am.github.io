@@ -110,18 +110,18 @@ Maximum yield stress, $\sigma_{\mathrm{max}}$, is $1.2\,\sigma_{\mathrm{y}}$ at 
 
 ### Inherent strain solution parameters
 
-| Parameter                                                                                         | Value / setting                                                                | Unit              |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | ----------------- |
-| Ambient temperature                                                                               | 25                                                                             | °C                |
-| High-temperature material model                                                                   | See tables above                                                               | —                 |
-| Elastic parameters (room temperature, constant)                                                   | $E$ = 114.58<br>$\nu$ = 0.3                                                    | GPa<br>—          |
-| Plastic parameters (room temperature, constant)                                                   | $\sigma_{\mathrm{y}}$ = 1151<br>$H$ = 1.8139<br>$\sigma_{\mathrm{max}}$ = 1310 | MPa<br>GPa<br>MPa |
-| Identified inherent strain, $\varepsilon_{\mathrm{xx}}^{\ast} = \varepsilon_{\mathrm{yy}}^{\ast}$ | -2.820                                                                         | ‰                 |
-| Identified inherent strain, $\varepsilon_{\mathrm{zz}}^{\ast}$                                    | 2.879                                                                          | ‰                 |
-| Layer activation                                                                                  | 36 × 0.25                                                                      | Layers × mm       |
-| Constraints and release                                                                           | fixed plane $Z$ = 0 mm; no release                                             | —                 |
-| Thermal strain reference temperature                                                              | 25                                                                             | °C                |
-| Thermal strain cutoff                                                                             | solidus                                                                        | —                 |
+| Parameter                                                                                         | Value / setting                                                               | Unit              |
+| ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------- |
+| Ambient temperature                                                                               | 25                                                                            | °C                |
+| High-temperature material model                                                                   | See tables above                                                              | —                 |
+| Elastic parameters (room temperature, constant)                                                   | $E$ = 114.58<br>$\nu$ = 0.3                                                   | GPa<br>—          |
+| Plastic parameters (room temperature, constant)                                                   | $\sigma_{\mathrm{y}}$ = 1151<br>$H$ = 1.814<br>$\sigma_{\mathrm{max}}$ = 1310 | MPa<br>GPa<br>MPa |
+| Identified inherent strain, $\varepsilon_{\mathrm{xx}}^{\ast} = \varepsilon_{\mathrm{yy}}^{\ast}$ | -2.820                                                                        | ‰                 |
+| Identified inherent strain, $\varepsilon_{\mathrm{zz}}^{\ast}$                                    | 2.879                                                                         | ‰                 |
+| Layer activation                                                                                  | 36 × 0.25                                                                     | Layers × mm       |
+| Constraints and release                                                                           | fixed plane $Z$ = 0 mm; no release                                            | —                 |
+| Thermal strain reference temperature                                                              | 25                                                                            | °C                |
+| Thermal strain cutoff                                                                             | solidus                                                                       | —                 |
 
 The physical print layer is 30 µm. The 250 µm layer pitch used in the model is a separate coarse activation setting.
 

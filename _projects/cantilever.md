@@ -94,19 +94,19 @@ Specific heat is converted from the Table S6 volumetric heat capacity using the 
 
 #### Mechanical properties
 
-| $T$ (°C) | $E$ (GPa) | $\sigma_{\mathrm{y}}$ (MPa) | $\alpha$ (µm/(m·K)) | $\nu$ (—) | $H$ (GPa)           | $\sigma_{\mathrm{max}}$ (MPa) |
-| -------- | --------- | --------------------------- | ------------------- | --------- | ------------------- | ----------------------------- |
-| 20       | 208       | 725                         | —                   | 0.277     | 0.7571428571428572  | 990                           |
-| 100      | 204       | —                           | 5.56                | 0.28      | —                   | —                             |
-| 200      | 198       | —                           | 6.28                | 0.286     | —                   | —                             |
-| 300      | 192       | 610                         | 6.61                | 0.29      | 0.14285714285714285 | 660                           |
-| 400      | 186       | —                           | 7.38                | 0.295     | —                   | —                             |
-| 550      | 179       | —                           | 7.93                | 0.305     | —                   | —                             |
-| 600      | —         | 515                         | —                   | —         | 0.1285714285714286  | 560                           |
-| 650      | 170       | —                           | 9.47                | 0.321     | —                   | —                             |
-| 750      | 161       | —                           | 10.5                | 0.34      | —                   | —                             |
-| 800      | —         | 100                         | —                   | —         | 0.05714285714285715 | 120                           |
-| 870      | 148       | —                           | 11.6                | 0.336     | —                   | —                             |
+| $T$ (°C) | $E$ (GPa) | $\sigma_{\mathrm{y}}$ (MPa) | $\alpha$ (µm/(m·K)) | $\nu$ (—) | $H$ (GPa) | $\sigma_{\mathrm{max}}$ (MPa) |
+| -------- | --------- | --------------------------- | ------------------- | --------- | --------- | ----------------------------- |
+| 20       | 208       | 725                         | —                   | 0.277     | 0.757     | 990                           |
+| 100      | 204       | —                           | 5.56                | 0.28      | —         | —                             |
+| 200      | 198       | —                           | 6.28                | 0.286     | —         | —                             |
+| 300      | 192       | 610                         | 6.61                | 0.29      | 0.143     | 660                           |
+| 400      | 186       | —                           | 7.38                | 0.295     | —         | —                             |
+| 550      | 179       | —                           | 7.93                | 0.305     | —         | —                             |
+| 600      | —         | 515                         | —                   | —         | 0.129     | 560                           |
+| 650      | 170       | —                           | 9.47                | 0.321     | —         | —                             |
+| 750      | 161       | —                           | 10.5                | 0.34      | —         | —                             |
+| 800      | —         | 100                         | —                   | —         | 0.057     | 120                           |
+| 870      | 148       | —                           | 11.6                | 0.336     | —         | —                             |
 
 For a constant property, only the first value is shown and subsequent dashes retain that value. Other dashes denote no independent tabulated entry, not zero. Each property is linearly interpolated on its own temperature grid, with the nearest endpoint held outside that range.
 
@@ -125,7 +125,7 @@ Maximum yield stress corresponds to the configured cap at equivalent plastic str
 | Ambient temperature                                                                               | 25                                                                               | °C                |
 | High-temperature material model                                                                   | See tables above                                                                 | —                 |
 | Elastic parameters (20 °C, constant)                                                              | $E$ = 208<br>$\nu$ = 0.277                                                       | GPa<br>—          |
-| Plastic parameters (20 °C, constant)                                                              | $\sigma_{\mathrm{y}}$ = 725<br>$H$ = 0.75714<br>$\sigma_{\mathrm{max}}$ = 990    | MPa<br>GPa<br>MPa |
+| Plastic parameters (20 °C, constant)                                                              | $\sigma_{\mathrm{y}}$ = 725<br>$H$ = 0.757<br>$\sigma_{\mathrm{max}}$ = 990      | MPa<br>GPa<br>MPa |
 | Elastic parameters (saved local identification)                                                   | $E$ = 156.3<br>$\nu$ = 0.300                                                     | GPa<br>—          |
 | Plastic parameters (saved local identification)                                                   | $\sigma_{\mathrm{y}}$ = 308.9<br>$H$ = 1.000<br>$\sigma_{\mathrm{max}}$ = 370.68 | MPa<br>GPa<br>MPa |
 | Identified inherent strain, $\varepsilon_{\mathrm{xx}}^{\ast} = \varepsilon_{\mathrm{yy}}^{\ast}$ | −3.655                                                                           | ‰                 |

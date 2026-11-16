@@ -340,9 +340,9 @@ for (const theme of ["light", "dark"]) {
             .locator(":scope > h3")
             .filter({ hasText: /^(Printing parameters|Temperature-dependent material parameters|Inherent strain solution parameters)$/ })
         ).toHaveText(["Printing parameters", "Temperature-dependent material parameters", "Inherent strain solution parameters"]);
-        await expect(article.locator(":scope > table")).toHaveCount(4);
+        await expect(article.locator(":scope > table")).toHaveCount(slug === "single-track" ? 2 : 4);
         const parameters = article;
-        const materialTables = article.locator(":scope > h4 + table");
+        const materialTables = slug === "single-track" ? article.locator(".rsh-material-grid table") : article.locator(":scope > h4 + table");
         await expect(article.locator("details.rsh-parameter-details")).toHaveCount(0);
 
         const response = await request.get(`/assets/data/cases/${folder}/thermal-parameters.json`);
@@ -361,7 +361,21 @@ for (const theme of ["light", "dark"]) {
         expect(records[0]).toBe("region,material,property,temperature_k,temperature_c,value,unit,status");
 
         for (const table of await materialTables.all()) await expect(table).toBeVisible();
-        await expect(materialTables).toHaveCount(2);
+        await expect(materialTables).toHaveCount(slug === "single-track" ? 4 : 2);
+        if (slug === "single-track") {
+          for (const group of await article.locator(".rsh-material-grid").all()) {
+            const panels = group.locator(":scope > section");
+            await expect(panels).toHaveCount(2);
+            const left = await panels.nth(0).boundingBox();
+            const right = await panels.nth(1).boundingBox();
+            if (page.viewportSize().width >= 768) {
+              expect(Math.abs(left.y - right.y)).toBeLessThanOrEqual(1);
+              expect(right.x).toBeGreaterThan(left.x);
+            } else {
+              expect(right.y).toBeGreaterThanOrEqual(left.y + left.height - 1);
+            }
+          }
+        }
         expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(await page.evaluate(() => window.innerWidth + 1));
 
         const downloads = await article.locator('a[href^="/assets/"]').evaluateAll((links) => links.map((link) => link.getAttribute("href")));
