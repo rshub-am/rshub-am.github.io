@@ -409,6 +409,30 @@ html[data-theme="dark"] .rsh,
 .rsh .rsh-resource p:last-child {
   margin-bottom: 0;
 }
+.rsh .rsh-parameter-table {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+.rsh .rsh-parameter-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.rsh .rsh-parameter-table caption {
+  padding-bottom: 0.6rem;
+  color: var(--hub-muted);
+  text-align: left;
+}
+.rsh .rsh-parameter-table th,
+.rsh .rsh-parameter-table td {
+  padding: 0.7rem;
+  border-bottom: 1px solid var(--hub-line);
+  text-align: left;
+  vertical-align: top;
+}
+.rsh .rsh-parameter-table thead {
+  background: var(--hub-panel);
+}
 .rsh .rsh-animation-placeholder {
   display: flex;
   align-items: center;
