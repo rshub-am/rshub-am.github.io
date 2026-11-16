@@ -1,7 +1,6 @@
 {
   "case": "Cantilever",
-  "description": "Full current thermal and temperature-dependent material configuration; archived figures were not rerun with this snapshot.",
-  "source_configuration_sha256": "910f50fdf959f32ab8afa40b1ffa6a561ca1f12b54d97f5e2c6dbcd7ddc11d19",
+  "description": "Material tables corrected against Qi et al., supplementary Table S6. Other settings are retained from the original configuration; saved simulation results were not rerun.",
   "temperature_convention": {
     "table_temperature_unit": "K",
     "solver_temperature_unit": "degC",
@@ -89,8 +88,11 @@
         "values": [9.8, 10.7, 12.5, 14.1, 15.6, 17.4, 18.9, 20.1, 22.7]
       },
       "heat_capacity": {
-        "temperature_k": [298, 373, 473, 573, 673, 773, 873, 973, 1073, 1173, 1273, 1373, 1443, 1609],
-        "values": [435, 455, 479, 497, 515, 527, 558, 568, 680, 640, 620, 640, 650, 720]
+        "temperature_k": [293.15, 373.15, 473.15, 573.15, 673.15, 823.15, 923.15, 1023.15, 1143.15],
+        "values": [
+          427.35042735042737, 439.56043956043953, 476.1904761904762, 500.61050061050054, 525.030525030525, 549.4505494505495, 586.080586080586,
+          610.5006105006105, 634.9206349206349
+        ]
       },
       "elastic_modulus": {
         "temperature_k": [293.15, 373.15, 473.15, 573.15, 673.15, 823.15, 923.15, 1023.15, 1143.15],
@@ -115,6 +117,10 @@
       "maximum_yield_stress": {
         "temperature_k": [293.15, 573.15, 873.15, 1073.15],
         "values_mpa": [990, 660, 560, 120]
+      },
+      "volumetric_heat_capacity": {
+        "temperature_k": [293.15, 373.15, 473.15, 573.15, 673.15, 823.15, 923.15, 1023.15, 1143.15],
+        "values_mj_m3_k": [3.5, 3.6, 3.9, 4.1, 4.3, 4.5, 4.8, 5.0, 5.2]
       }
     },
     "lower_region": {
@@ -128,8 +134,11 @@
         "values": [9.8, 10.7, 12.5, 14.1, 15.6, 17.4, 18.9, 20.1, 22.7]
       },
       "heat_capacity": {
-        "temperature_k": [298, 373, 473, 573, 673, 773, 873, 973, 1073, 1173, 1273, 1373, 1443, 1609],
-        "values": [435, 455, 479, 497, 515, 527, 558, 568, 680, 640, 620, 640, 650, 720]
+        "temperature_k": [293.15, 373.15, 473.15, 573.15, 673.15, 823.15, 923.15, 1023.15, 1143.15],
+        "values": [
+          427.35042735042737, 439.56043956043953, 476.1904761904762, 500.61050061050054, 525.030525030525, 549.4505494505495, 586.080586080586,
+          610.5006105006105, 634.9206349206349
+        ]
       },
       "elastic_modulus": {
         "temperature_k": [293.15, 373.15, 473.15, 573.15, 673.15, 823.15, 923.15, 1023.15, 1143.15],
@@ -154,6 +163,10 @@
       "maximum_yield_stress": {
         "temperature_k": [293.15, 573.15, 873.15, 1073.15],
         "values_mpa": [990, 660, 560, 120]
+      },
+      "volumetric_heat_capacity": {
+        "temperature_k": [293.15, 373.15, 473.15, 573.15, 673.15, 823.15, 923.15, 1023.15, 1143.15],
+        "values_mj_m3_k": [3.5, 3.6, 3.9, 4.1, 4.3, 4.5, 4.8, 5.0, 5.2]
       }
     }
   },
@@ -165,7 +178,8 @@
     "poisson_ratio": "dimensionless",
     "yield_stress": "MPa",
     "hardening_modulus": "GPa",
-    "maximum_yield_stress": "MPa"
+    "maximum_yield_stress": "MPa",
+    "volumetric_heat_capacity": "MJ/(m^3*K)"
   },
   "material_scalar_units": {
     "density_kg_m3": "kg/m^3",
@@ -175,12 +189,46 @@
   },
   "material_regions": "Upper and lower regions use the same IN625 tables.",
   "parameter_status": {
-    "configured_material_tables": "The configuration attributes conductivity, elasticity, thermal expansion and plastic tables to Table S6 of the local supplementary material; this is distinct from the original Phan et al. benchmark article.",
-    "unverified_legacy_inputs": ["density_kg_m3", "latent_heat_j_kg", "solidus_temperature_k", "liquidus_temperature_k", "heat_capacity"],
+    "configured_material_tables": "Reference material tables follow Qi et al., supplementary Table S6, with volumetric heat capacity transcribed on the same Celsius grid as conductivity. They are distinct from the original Phan et al. experimental article.",
+    "unverified_legacy_inputs": ["latent_heat_j_kg", "solidus_temperature_k", "liquidus_temperature_k"],
     "thermal_expansion_below_100_c": "The source has no 20 degC entry. The solver holds 5.56e-6/K below the first 100 degC point.",
-    "heat_capacity": "Specific heat is retained as configured; its source/unit conversion remains unresolved.",
+    "heat_capacity": "Derived from the Table S6 volumetric heat capacity using the documented unit interpretation and retained density of 8190 kg/m^3.",
     "maximum_yield_stress": "Configured saturation stress at equivalent plastic strain 0.35; behavior beyond this strain is a modeling assumption.",
     "heat_source": "Configured Goldak model; not a confirmed match to the supplementary Gaussian source.",
-    "cooling": "Configured 200 s after each layer; not a confirmed experimental interlayer idle time."
+    "cooling": "Configured 200 s after each layer; not a confirmed experimental interlayer idle time.",
+    "volumetric_heat_capacity": "Source values transcribed from Table S6; printed volume unit mm^3 is interpreted as m^3, as documented in material_source.",
+    "density": "Fixed 8190 kg/m^3, matching the author’s local Opt_IS Cantilever configuration."
+  },
+  "original_configuration_sha256": "910f50fdf959f32ab8afa40b1ffa6a561ca1f12b54d97f5e2c6dbcd7ddc11d19",
+  "material_source": {
+    "citation": "Qi et al. (2025), supplementary Table S6",
+    "document": "1-s2.0-S2214860425003902-mmc1.docx",
+    "document_sha256": "2f52479e4232f858222fdcb93c45cefb7c2058646144165f06be7f23b79ff413",
+    "original_parameter_json_sha256": "b59e7c89e3012be782de8f261515ebc11fe9cf056897840789cd9eeb1ff0e556",
+    "temperature_unit": "degC",
+    "table_caption": "Table S6 Material properties of IN625. The E is the elastic modulus,  is the coefficient of thermal expansion, is the Poisson’s ratio, k is the thermal conductivity,  and  are the yield strength at equivalent plastic strain  = 0 and  = 0.35,, and ρcp is the volumetric heat capacity [3].",
+    "source_rows": [
+      ["T (℃)", "E (GPa)", " (℃-1)", "", "k (W/mK)", " (MPa)( = 0)", " (MPa)( = 0.35)", "ρcp (MJ/mm3K)"],
+      ["20", "208", "-", "0.277", "9.8", "725", "990", "3.5"],
+      ["100", "204", "5.56×10-6", "0.280", "10.7", "-", "-", "3.6"],
+      ["200", "198", "6.28×10-6", "0.286", "12.5", "-", "-", "3.9"],
+      ["300", "192", "6.61×10-6", "0.290", "14.1", "610", "660", "4.1"],
+      ["400", "186", "7.38×10-6", "0.295", "15.6", "-", "-", "4.3"],
+      ["550", "179", "7.93×10-6", "0.305", "17.4", "-", "-", "4.5"],
+      ["600", "-", "-", "-", "", "515", "560", "-"],
+      ["650", "170", "9.47×10-6", "0.321", "18.9", "-", "-", "4.8"],
+      ["750", "161", "1.05×10-5", "0.340", "20.1", "-", "-", "5.0"],
+      ["800", "-", "-", "-", "", "100", "120", "-"],
+      ["870", "148", "1.16×10-5", "0.336", "22.7", "-", "-", "5.2"]
+    ],
+    "volumetric_heat_capacity_unit_as_printed": "MJ/(mm^3*K)",
+    "volumetric_heat_capacity_unit_interpretation": "MJ/(m^3*K)",
+    "unit_note": "The source header prints mm^3. Its 3.5–5.2 values are interpreted as MJ/(m^3*K), consistent with the magnitude of volumetric heat capacity for IN625. This is an explicit unit correction, not a literal SI conversion from the printed mm^3.",
+    "specific_heat_conversion": "heat_capacity [J/(kg*K)] = volumetric_heat_capacity [MJ/(m^3*K)] * 1e6 / density_kg_m3",
+    "results_note": "The original configuration hash predates this material-table correction; saved thermal histories and result figures have not been rerun.",
+    "fixed_density_kg_m3": 8190.0,
+    "density_configuration": "Opt_IS/opt_solver/cases/cantilever/am.yaml",
+    "density_configuration_sha256": "910f50fdf959f32ab8afa40b1ffa6a561ca1f12b54d97f5e2c6dbcd7ddc11d19",
+    "density_note": "Fixed density confirmed in the local solver configuration and explicitly requested by the author."
   }
 }

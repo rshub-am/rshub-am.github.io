@@ -68,9 +68,9 @@ _Figure 1. Geometry and dimensions._
 
 ### Temperature-dependent material parameters
 
-The temperature-dependent conductivity, elastic, thermal-expansion and plastic parameters used in the local scan model for inherent-strain identification are taken from Table S6 of Qi et al. <a href="#reference-2">[2]</a>.
+The temperature-dependent thermal and mechanical parameters below follow Table S6 of Qi et al. <a href="#reference-2">[2]</a>.
 
-**IN625 — build and substrate.** Density, $\rho$ = 8190 kg/m³. Latent heat, $L$ = 286000 J/kg. Solidus temperature, $T_{\mathrm{s}}$ = 1533 K. Liquidus temperature, $T_{\mathrm{l}}$ = 1609 K. Volumetric heat capacity, $\rho C_{\mathrm{p}}$ = $\rho C_{\mathrm{p}}(T)$ J/(m³·K).
+**IN625 — build and substrate.** Density, $\rho$ = 8190 kg/m³. Latent heat, $L$ = 286000 J/kg. Solidus temperature, $T_{\mathrm{s}}$ = 1533 K. Liquidus temperature, $T_{\mathrm{l}}$ = 1609 K.
 
 Symbols: $C_{\mathrm{p}}$, specific heat capacity; $k$, thermal conductivity; $E$, Young’s modulus; $\sigma_{\mathrm{y}}$, initial yield stress; $\alpha$, thermal expansion coefficient; $\nu$, Poisson ratio; $H$, hardening modulus; $\sigma_{\mathrm{max}}$, maximum yield stress.
 
@@ -78,29 +78,19 @@ Symbols: $C_{\mathrm{p}}$, specific heat capacity; $k$, thermal conductivity; $E
 
 | $T$ (°C) | $C_{\mathrm{p}}$ (J/(kg·K)) | $k$ (W/(m·K)) |
 | -------- | --------------------------- | ------------- |
-| 20       | —                           | 9.8           |
-| 24.85    | 435                         | —             |
-| 99.85    | 455                         | —             |
-| 100      | —                           | 10.7          |
-| 199.85   | 479                         | —             |
-| 200      | —                           | 12.5          |
-| 299.85   | 497                         | —             |
-| 300      | —                           | 14.1          |
-| 399.85   | 515                         | —             |
-| 400      | —                           | 15.6          |
-| 499.85   | 527                         | —             |
-| 550      | —                           | 17.4          |
-| 599.85   | 558                         | —             |
-| 650      | —                           | 18.9          |
-| 699.85   | 568                         | —             |
-| 750      | —                           | 20.1          |
-| 799.85   | 680                         | —             |
-| 870      | —                           | 22.7          |
-| 899.85   | 640                         | —             |
-| 999.85   | 620                         | —             |
-| 1099.85  | 640                         | —             |
-| 1169.85  | 650                         | —             |
-| 1335.85  | 720                         | —             |
+| 20       | 427.35                      | 9.8           |
+| 100      | 439.56                      | 10.7          |
+| 200      | 476.19                      | 12.5          |
+| 300      | 500.61                      | 14.1          |
+| 400      | 525.03                      | 15.6          |
+| 550      | 549.45                      | 17.4          |
+| 600      | —                           | —             |
+| 650      | 586.08                      | 18.9          |
+| 750      | 610.50                      | 20.1          |
+| 800      | —                           | —             |
+| 870      | 634.92                      | 22.7          |
+
+Specific heat is converted from the Table S6 volumetric heat capacity using the fixed density $\rho = 8190$ kg/m³: $C_{\mathrm{p}} = (\rho C_{\mathrm{p}})/\rho$. Values are displayed to two decimal places; the downloads retain full precision.
 
 #### Mechanical properties
 
@@ -118,9 +108,9 @@ Symbols: $C_{\mathrm{p}}$, specific heat capacity; $k$, thermal conductivity; $E
 | 800      | —         | 100                         | —                   | —         | 0.05714285714285715 | 120                           |
 | 870      | 148       | —                           | 11.6                | 0.336     | —                   | —                             |
 
-A dash denotes no independent tabulated value at that temperature, not zero. Each property is linearly interpolated on its own temperature grid, with the nearest endpoint held outside that range.
+For a constant property, only the first value is shown and subsequent dashes retain that value. Other dashes denote no independent tabulated entry, not zero. Each property is linearly interpolated on its own temperature grid, with the nearest endpoint held outside that range.
 
-_Density, latent heat, solidus/liquidus temperatures, and specific heat are retained configuration inputs whose material-source validation is still pending._
+_Latent heat and solidus/liquidus temperatures are retained configuration inputs whose material-source validation is still pending. Saved simulation results have not been rerun with the corrected heat-capacity table._
 
 _For $\alpha$ below 100 °C, the solver holds the first value, 5.56 × 10⁻⁶ K⁻¹._
 

@@ -80,7 +80,7 @@ Symbols: $C_{\mathrm{p}}$, specific heat capacity; $k$, thermal conductivity; $E
 | $T$ (°C) | $C_{\mathrm{p}}$ (J/(kg·K)) | $k$ (W/(m·K)) |
 | -------- | --------------------------- | ------------- |
 | 0        | 496                         | 48.6          |
-| 700      | 496                         | 48.6          |
+| 700      | —                           | —             |
 
 #### Mechanical properties
 
@@ -98,7 +98,7 @@ Symbols: $C_{\mathrm{p}}$, specific heat capacity; $k$, thermal conductivity; $E
 | 900      | 20        | 50                          | 12                  | 0.35      | 0         | 50                            |
 | 1000     | 10        | 50                          | 15                  | 0.39      | 0         | 50                            |
 
-A dash denotes no independent tabulated value at that temperature, not zero. Each property is linearly interpolated on its own temperature grid, with the nearest endpoint held outside that range.
+For a constant property, only the first value is shown and subsequent dashes retain that value. Other dashes denote no independent tabulated entry, not zero. Each property is linearly interpolated on its own temperature grid, with the nearest endpoint held outside that range.
 
 The phase-change settings are numerical model inputs: latent heat is zero and the configured solidus / liquidus are 1273.15 / 1274.15 K. They are not claimed as measured steel melting temperatures.
 

@@ -92,17 +92,17 @@ Symbols: $C_{\mathrm{p}}$, specific heat capacity; $k$, thermal conductivity; $E
 | ------- | -------- | --------- | --------------------------- | ------------------- | --------- | --------- |
 | 273     | -0.15    | —         | —                           | 8.85                | —         | —         |
 | 293     | 19.85    | 115       | 1151                        | —                   | 0.3       | 1.828     |
-| 961     | 687.85   | 60.7      | 365.8                       | —                   | 0.3       | 1         |
-| 973     | 699.85   | 59.8      | 257.6                       | —                   | 0.3       | 1         |
-| 1173    | 899.85   | 24        | 69                          | —                   | 0.3       | 1         |
+| 961     | 687.85   | 60.7      | 365.8                       | —                   | —         | 1         |
+| 973     | 699.85   | 59.8      | 257.6                       | —                   | —         | 1         |
+| 1173    | 899.85   | 24        | 69                          | —                   | —         | 1         |
 | 1254    | 980.85   | —         | —                           | 10.72               | —         | —         |
-| 1264    | 990.85   | 16.7      | 69                          | 10.74               | 0.3       | 1         |
-| 1538    | 1264.85  | 11        | 69                          | —                   | 0.3       | 1         |
+| 1264    | 990.85   | 16.7      | 69                          | 10.74               | —         | 1         |
+| 1538    | 1264.85  | 11        | 69                          | —                   | —         | 1         |
 | 1913    | 1639.85  | —         | —                           | 11.97               | —         | —         |
 | 1923    | 1649.85  | —         | —                           | 20.17               | —         | —         |
 | 3550    | 3276.85  | —         | —                           | 0                   | —         | —         |
 
-A dash denotes no independent tabulated value at that temperature, not zero. Each property is linearly interpolated on its own temperature grid, with the nearest endpoint held outside that range.
+For a constant property, only the first value is shown and subsequent dashes retain that value. Other dashes denote no independent tabulated entry, not zero. Each property is linearly interpolated on its own temperature grid, with the nearest endpoint held outside that range.
 
 Maximum yield stress, $\sigma_{\mathrm{max}}$, is $1.2\,\sigma_{\mathrm{y}}$ at each interpolated temperature.
 

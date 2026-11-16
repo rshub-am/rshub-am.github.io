@@ -237,7 +237,8 @@ for key, case in cases.items():
             for i, t in enumerate(temperatures):
                 grouped_rows[title].append(
                     [mat['name'] if i == 0 else '', t, round(t - 273.15, 8)]
-                    + [values_by_property.get(prop, {}).get(t, '—') for prop in props]
+                    + [('—' if len(set(values_by_property.get(prop, {}).values())) == 1 and t != min(values_by_property[prop])
+                        else values_by_property.get(prop, {}).get(t, '—')) for prop in props]
                 )
     with (dirs['data'] / 'temperature-dependent-properties.csv').open('w', newline='') as handle:
         writer = csv.writer(handle)
@@ -290,7 +291,7 @@ for key, case in cases.items():
             + [f'{properties[prop][0]} ({properties[prop][2]})' for prop in props],
             grouped_rows[title],
         ) + '\n'
-    text += 'A dash denotes no independent tabulated value at that temperature, not zero.\n\n'
+    text += 'For a constant property, only the first value is shown and subsequent dashes retain that value. Other dashes denote no independent tabulated entry, not zero.\n\n'
     if key == 'thin_wall':
         text += 'The phase-change settings are numerical model inputs: latent heat is zero and the configured solidus / liquidus are 1273.15 / 1274.15 K. They are not claimed as measured steel melting temperatures.\n\n'
     if key == 'double_cantilever':

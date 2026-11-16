@@ -51,7 +51,7 @@ Benchmarks 页面只显示一段简介、算例卡片或简短空状态；Method
 
 当前打印配置与存档热历史的配置哈希不匹配；所选局部优化的固有应变也不同于已有宏观配置。正文分别注明当前输入、所选标定和存档输出，不把它们当成同一套已验证计算。页脚已引用维护者提供的 Phan 等（2019）原始 AM-Bench 文章，DOI 和书目信息已通过 Crossref 核对；存档图中各条实验曲线与原文测量条件的对应关系仍未逐项核实。
 
-Cantilever 正文采用 Overview、Problem set、Results 三段普通 Markdown；Problem set 依次分为 Printing parameters、Temperature-dependent material parameters、Inherent strain solution parameters 三个同级小节，材料常数和温度相关材料表位于第二节。Overview 使用中子衍射法和轮廓法的简短实验介绍；模拟表列出温度相关材料参数、常温参数和已有固有应变识别值。新算例模板也采用普通 Markdown。只需编辑标题、段落、表格、图片路径和图注；三个小节均使用普通 Markdown 三级标题，完整参数和表格直接排列在正文中。所有材料数据直接显示，无需点击展开。`assets/data/cases/cantilever/thermal-parameters.json` 包含完整配置、单位与参数状态；`temperature-dependent-properties.csv` 逐条列出 61 个原始温度节点值，方便程序和 AI 读取。更新参数时应同步正文、JSON 和 CSV。新算例草稿保持 `published: false`；当前五个算例均已发布。
+Cantilever 正文采用 Overview、Problem set、Results 三段普通 Markdown；Problem set 依次分为 Printing parameters、Temperature-dependent material parameters、Inherent strain solution parameters 三个同级小节，材料常数和温度相关材料表位于第二节。Overview 使用中子衍射法和轮廓法的简短实验介绍；模拟表列出温度相关材料参数、常温参数和已有固有应变识别值。新算例模板也采用普通 Markdown。只需编辑标题、段落、表格、图片路径和图注；三个小节均使用普通 Markdown 三级标题，完整参数和表格直接排列在正文中。所有材料数据直接显示，无需点击展开。`assets/data/cases/cantilever/thermal-parameters.json` 包含完整配置、单位与参数状态；`temperature-dependent-properties.csv` 逐条列出 65 个温度相关数值（含 9 个从体积热容量换算的比热值），方便程序和 AI 读取。更新参数时应同步正文、JSON 和 CSV。新算例草稿保持 `published: false`；当前五个算例均已发布。
 
 ## 算例顺序与图片目录
 
@@ -300,7 +300,7 @@ Single track、Thin-wall、Bridge 和 Double-cantilever 采用与 Cantilever 一
 - **Bridge**：使用 Ti-6Al-4V、100 W、600 mm/s、层高 30 µm、hatch 105 µm；宏观激活是 36 × 0.25 mm。保存识别的常温 H 与宏观配置的 H 分别为 1.828 和 1.8139 GPa，独立列出。局部热历史保留原曲线；当前展示的校准图和宏观剖面采用下文的论文用图清单。旧三页校准图仍保存在素材目录。
 - **Double-cantilever**：使用 IN718 `dc`，285 W、960 mm/s、层高 40 µm、hatch 110 µm、逐层旋转 67°，宏观激活是 36 × 0.515 mm。未合并 Ti-6Al-4V `dc2`。最新固有应变为 εxx=εyy≈−4.339316‰、εzz≈19.647142‰；存档对比图使用 εxx=εyy≈−4.672144‰、εzz≈15.520310‰，正文分别标注。局部流动塑性历史保留；校准与释放翘曲采用下文的论文用图清单，不重新求解。旧三页校准图仍保存在素材目录。
 
-每个 case 的材料属性区只保留 Thermal properties 和 Mechanical properties 两张表，同组属性按温度横向排列，Single Track 的两种材料在表内分组，材料常数放在表前说明中。布局参考当前论文 `revision_notes/2026-11-11_full_material_tables_archive.md` 存档的原始完整附录；仅调整组织方式，不用附录中的差异值覆盖网站当前配置。横线表示没有独立表列值，不是零。温度表保留每个属性自身的原始节点，CSV 逐区域列出所有配置点；常温参数从同一套表插值或使用端点保持，宏观常数另行列出。相变值、零硬化等模型设置不冒称实验测量。原图中参考曲线保留原标签；其他算例的完整原始文章引用尚未提供，本次不补造书目。
+每个 case 的材料属性区只保留 Thermal properties 和 Mechanical properties 两张表，同组属性按温度横向排列，Single Track 的两种材料在表内分组，材料常数放在表前说明中。布局参考当前论文 `revision_notes/2026-11-11_full_material_tables_archive.md` 存档的原始完整附录；仅调整组织方式，不用附录中的差异值覆盖网站当前配置。恒定参数列（所有节点值相同或仅有一个值）只显示首值，后续以横线表示沿用该常数；其他横线表示没有独立表列值，不是零。首尾相同但中间变化的列仍完整显示。温度表保留每个属性自身的原始节点，CSV 逐区域列出所有配置点；常温参数从同一套表插值或使用端点保持，宏观常数另行列出。相变值、零硬化等模型设置不冒称实验测量。原图中参考曲线保留原标签；其他算例的完整原始文章引用尚未提供，本次不补造书目。
 
 导入工具需要本地 numpy、matplotlib、meshio、PyYAML、PyMuPDF；不增加网站运行依赖。先运行素材/页面导入，再运行 Single track 云图导出：
 
@@ -348,3 +348,7 @@ Methods 等 Hub 内容区的代码块采用 13 px 字号和 1.5 倍行高，内�
 两种方法均按 **Model and weak forms → Element activation → Solution procedure → Cutting and stress release → Implementation and results** 组织。热力法给出热传导和力平衡的标准弱形式；固有应变法给出同一机械弱形式，再说明固有应变如何进入本构更新。正文不列强形式。两者分别解释新单元的加载、已激活材料的状态继承，以及切割后改变约束、保留应力和塑性历史并重新求平衡的过程。优化与运行细节放在原生 details 中。
 
 弱形式不使用 aligned 或显式换行，`.rsh-equation` 在窄屏内横向滚动，保持一条公式一行且不撑宽整页。背景资料链接位于 Methods 页脚。
+
+## Cantilever 热参数来源修正
+
+Cantilever 热参数按维护者提供的 `1-s2.0-S2214860425003902-mmc1.docx` 中 Table S6 逐行转录，使用原表的摄氏温度、导热系数和体积热容量，并按 `Opt_IS/opt_solver/cases/cantilever/am.yaml` 中的固定密度 8190 kg/m³ 换算比热，网页显示两位小数，下载保留完整精度，保留 600 °C 与 800 °C 的缺值。旧的 14 点比热表来自另一套历史配置，已从当前网页及参数下载移除。JSON 的 `material_source` 保存原表、源文件 SHA-256 与单位解释；原配置哈希改存为 `original_configuration_sha256`。源表将体积热容量单位印作 MJ/(mm³·K)，本站明确按 MJ/(m³·K) 解释该量级，并通过 $C_{\mathrm{p}}=(\rho C_{\mathrm{p}})/8190$ 换算供下载配置使用的比热。机械表、其他求解设置及已有图和结果不变，未重新运行计算。
