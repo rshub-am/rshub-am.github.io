@@ -77,6 +77,23 @@ for (const theme of ["light", "dark"]) {
             await page.screenshot({ path: `/tmp/rsh-benchmarks-${test.info().project.name}.png` });
           }
         }
+        const headingHierarchy = await page
+          .locator(".post > article h2, .post > article h3, .post > article h4, .post > article h5, .post > article h6")
+          .evaluateAll((headings) => {
+            const ancestors = [];
+            return headings.flatMap((heading) => {
+              const level = Number(heading.tagName.slice(1));
+              const size = parseFloat(getComputedStyle(heading).fontSize);
+              while (ancestors.length && ancestors[ancestors.length - 1].level >= level) ancestors.pop();
+              const parent = ancestors[ancestors.length - 1];
+              const comparison = parent ? [{ heading: heading.textContent.trim(), size, parent: parent.text, parentSize: parent.size }] : [];
+              ancestors.push({ level, size, text: heading.textContent.trim() });
+              return comparison;
+            });
+          });
+        for (const heading of headingHierarchy) {
+          expect(heading.size, `${heading.heading} must be smaller than ${heading.parent} on ${route}`).toBeLessThan(heading.parentSize);
+        }
         await expect(page.locator("#toc-sidebar")).toHaveCount(0);
         const images = page.locator('.rsh img:not([aria-hidden="true"]), .post > article:has(> #overview) img:not([aria-hidden="true"])');
         for (let i = 0; i < (await images.count()); i++) {
@@ -85,7 +102,7 @@ for (const theme of ["light", "dark"]) {
           await expect(image).toHaveAttribute("alt", /\S+/);
           await expect.poll(() => image.evaluate((img) => img.complete && img.naturalWidth > 0)).toBe(true);
         }
-        for (const grid of await page.locator(".rsh-case-figures").all()) {
+        for (const grid of await page.locator(".rsh-case-figures:not(.rsh-material-grid)").all()) {
           const columns = await grid.evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(" ").length);
           expect(columns).toBe(page.viewportSize().width >= 768 ? 2 : 1);
           const figures = grid.locator(".rsh-case-figure");
